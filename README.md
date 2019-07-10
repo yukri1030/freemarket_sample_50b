@@ -1,6 +1,6 @@
 ## ER図
 
-[![Image from Gyazo](https://i.gyazo.com/fc509b36516add007770cb74d9b67890.png)](https://gyazo.com/fc509b36516add007770cb74d9b67890)
+[![Image from Gyazo](https://i.gyazo.com/4f52d1d61945858a787b86ba7d63efd2.png)](https://gyazo.com/4f52d1d61945858a787b86ba7d63efd2)
 
 ## Users
 
@@ -21,7 +21,7 @@
 - has_many :addresses
 - has_many :cards
 - has_many :products
-- has_many :comments
+- has_many :comments, dependent: :destroy
 - has_many :likes
 - has_many :reviews
 
