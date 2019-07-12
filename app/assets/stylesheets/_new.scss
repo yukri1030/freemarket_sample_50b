@@ -145,23 +145,24 @@ header{
     padding: 50px 100px 0  100px;
     text-align: center;
   }
+  @mixin clearfix{
+    text-align: center;
+  }
   ul{
     display: flex;
     margin: 0 auto;
     padding-left: 100px;
   }
-  .clearfix{
-    text-align: center;
-  }
+  
   a{
+    @include clearfix;
     padding: 10px;
     text-decoration: none;
     color: black;
     display: block;
-    text-align: center;
   }
   .li_link{
-    text-align: center;
+    @include clearfix;
   }
   .log{
     height: 100px;
