@@ -15,18 +15,5 @@
       .contents__btn_google
         = image_tag 'google_icon.png',size: "35x37" , class: "google-icon "
         = link_to "Googleで登録"
-  .footer
-    .hosoku
-      %nav
-        %ul.clearfix
-          %li
-            = link_to "プライバシーポリシー",class: 'li_link'
-          %li
-            = link_to "メルカリ利用規約",class: 'li_link'
-          %li
-            = link_to "特定商取引に関する表記",class: 'li_link'
-        = image_tag 'logo-gray.svg',size: "80x80" , class: "log"
-        %small &copy; 2019 Mercari
-      %br
-      %br
-      %br
+  = render partial:'footer'
+  

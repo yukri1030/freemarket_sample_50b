@@ -69,10 +69,10 @@ header{
   }
 
   &__btn_facebook{
+    @extend .contents__btn_email;
     width: 300px;
     background-color: #385185;
     padding: 10px 13px 13px 13px;
-    margin: 0 auto;
 
     margin-top: 19px;
     
@@ -95,10 +95,10 @@ header{
   }
 
   &__btn_google{
+    @extend  .contents__btn_facebook;
     border: 1px solid #d3d3d3;
     width: 296px;
     background-color: #FFFFFF;
-    padding: 10px 13px 13px 13px;
     position: relative;
     margin: 0 auto;
 
