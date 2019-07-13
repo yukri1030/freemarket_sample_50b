@@ -1,0 +1,79 @@
+.zentai
+  .header
+    = image_tag "logo.svg", width:  "200", height: "50", class: "image_sign_up"
+    = image_tag 'signup_header1.png',size: "500x80" , class: "data__img"
+  .contents
+    .contents-box
+      .customer_data_input 会員情報入力
+      .input_box
+        .input_box1
+          .nickname
+            %ul
+              %li
+                %label ニックネーム
+                %span 必須
+              %li
+              %input{placeholder: "例) メルカリ太郎",autocomplete: "off"}
+            %ul
+              %li
+                %label メールアドレス
+                %span 必須
+              %li
+              %input{placeholder: "例) PC・携帯どちらでも可",autocomplete: "off"}
+            %ul
+              %li
+                %label パスワード
+                %span 必須
+              %li
+              %input{placeholder: "例) 6文字以上",autocomplete: "off"}
+            %ul
+              %li
+                %label パスワード（確認）
+                %span 必須
+              %li
+              %input{placeholder: "例) 6文字以上",autocomplete: "off"}
+              %li
+            %ul
+              %label 本人確認
+              %li
+                %p.confirm 安心・安全にご利用いただくために、お客さまの本人情報の登録にご協力ください。他のお客さまに公開されることはありません。
+            %ul
+              %li
+                %label お名前（全角）
+                %span 必須
+              %li
+                %input{class: "fast-name", placeholder: "例) 山田",autocomplete: "off"}
+                %input{class: "last-name", placeholder: "例) 彩",autocomplete: "off"}
+            %ul
+              %li
+                %label お名前カナ（全角）
+                %span 必須
+              %li
+                %input{class: "fast-name", placeholder: "例) ヤマダ",autocomplete: "off"}
+                %input{class: "last-name", placeholder: "例) アヤ",autocomplete: "off"}
+              %li
+            %ul
+              %li
+                %label 生年月日
+                %span 必須
+              %li
+              %input{class: "birthday", placeholder: "-- ",autocomplete: "off"} 年
+              %input{class: "birthday", placeholder: "-- ",autocomplete: "off"} 月
+              %input{class: "birthday", placeholder: "-- ",autocomplete: "off"} 日
+
+            %ul
+              %p.gray ※本人情報は正しく入力してください。会員登録後、修正するにはお時間をいただく場合があります。
+            .checkbox 
+            = image_tag 'rbot-img.png',size:"400x100"
+            %ul.susum
+              %h
+                「次へ進む」のボタンを押すことにより、
+                %h.rule 
+                = link_to "利用規約",color: "lightblue"
+                %h に同意したものとみなします
+            %ul
+              %button{class: "next", autocomplete: "off"}次に進む
+            .touroku 
+              = link_to "本人登録の情報について＞",class: "touroku", color:"lightblue"
+            
+  = render partial:'footer'

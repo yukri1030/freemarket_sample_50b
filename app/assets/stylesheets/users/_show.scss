@@ -1,0 +1,161 @@
+.zentai{
+  // height: 100vh;
+  width: 100vw;
+  background-color: #f5f5f5;
+}
+.header{
+  height: 8vh;
+  padding: 25px 0;
+}
+.image_sign_up{
+  padding-left: 120px;
+  margin-bottom: 60px;
+}
+.data__img{
+  padding-left: 100px;
+  margin-bottom: 40px;
+}
+
+.contents{
+  padding-bottom: 50px;
+
+  .contents-box{
+    margin: auto;
+    width: 800px;
+    height: 150vh;
+    background-color: white;
+    .customer_data_input{
+      height:8vh;
+      font-weight: bold;
+      font-size: 27px;
+      text-align: center;
+      line-height: 10vh;
+      padding: 20px;
+      border-bottom: 0.09px solid #eee;
+    }
+  }
+  .input_box{
+    padding: 20px;
+
+      .input_box1{
+        padding: 0 150px;
+
+        .nickname{
+          margin: 0 atuo;
+          padding-left: 40px
+        }
+
+        ul{
+          margin: 0 atuo;
+          bottom: 20px;
+          width: 400px
+        }
+
+        label{
+          font-weight: bold;
+          font-size: 12px;
+          padding-right: 10px;
+        }
+
+         span{
+          background: red;
+          padding: 2px 4px;
+          border-radius: 2px;
+          color: white;
+          font-size: 13px;
+        }
+        input{
+          height: 45px;
+          width: 340px;
+          margin: 5px 0 20px 0;
+          padding-left: 10px;
+          border-radius: 3px;
+          border: 1px solid #ccc;
+        }
+        p{
+          font-size: 13px;
+          line-height: 20px;
+        }
+        .confirm{
+          height: 80px;
+          width: 340;
+        }
+        .fast-name{
+          width: 160px;
+        }
+        .last-name{
+          width: 160px;
+        }
+        .birthday{
+          width: 90px;
+        }
+        .gray{
+          color: #a9a9a9;
+          padding-bottom: 15px;
+        }
+          
+        .susum{
+          margin-top: 10px;
+          text-align: center;
+          font-size: 13px;
+          text-decoration:none; 
+        }
+        
+        .next{
+          @extend span;
+          font-size: 15px;
+          height: 50px;
+          width: 400px;
+          margin: 20px 0 10px 0;
+        }
+      .touroku{
+        width: 200px;
+        margin-left: 200px;
+      }
+
+    }
+  }
+}
+
+.footer{
+  font-size: 5px;
+
+
+.hosoku{
+  width: 800px;
+  margin: auto;
+}
+  
+  nav{
+    text-align: center;
+  }
+  @mixin clearfix{
+    text-align: center;
+  }
+  ul{
+    display: flex;
+    margin: 0 auto;
+    padding-left: 200px;
+  }
+  
+  a{
+    @include clearfix;
+    padding: 10px;
+    text-decoration: none;
+    color: black;
+    display: block;
+  }
+  .li_link{
+    @include clearfix;
+  }
+  .log{
+    display: block;
+    margin: 0 auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  small{
+    font-size: 13px;
+    font-weight: none;
+  }
+}
