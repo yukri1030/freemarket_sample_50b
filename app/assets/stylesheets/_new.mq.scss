@@ -1,0 +1,111 @@
+@media screen and (max-width: 1000px){
+  .zentai{
+    height: 1750px;
+    overflow:hidden;
+  }
+}
+
+@media screen and (max-width: 1000px){
+  header{
+    height: 200px;
+    padding: 40px;
+    .mercari_log{
+      height: 150px;
+      width: 500px;
+      margin:70px 200px 0px 200px; 
+    }
+
+  }
+}
+@media screen and (max-width: 1000px){
+  .contents-box{
+    height: 950px;
+    .contents{
+      height: 900px;
+      width: 100%;
+      &__title{
+        height: 250px;
+        font-size: 60px;
+        line-height: 250px;
+
+        h2{
+          height: 250px;
+        }
+      }
+      &__btn_containe{
+        height: 600px;
+      }
+      
+      &__btn_email{
+        height: 110px;
+        width: 800px;
+        margin-bottom: 40px;
+        line-height:110px;
+    
+        .mail-icon{
+          font-size: 70px;
+          padding: 20px;
+        }
+        a{
+          font-size: 45px;
+          margin-left: 100px;
+        }
+      }
+      
+      &__btn_facebook{
+        height: 110px;
+        width: 800px;
+        text-align: center;
+        margin-bottom: 40px;
+        
+      }
+        .facebook-icon{
+          height: 80px;
+          width: 80px;
+          padding: 20px
+        }
+      &__btn_google{
+        height: 110px;
+        width: 800px;
+        // display: flex;
+        align-items: center;
+        margin-left: 50px ;
+        
+      
+        .google-icon{
+          height: 90px;
+          width: 90px;
+          padding-top: 7px;  
+          padding-left: 10px
+        }
+        a{
+          margin: 0 auto;
+        }
+        
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1000px){
+  .footer{
+    height: 520px;
+    font-size: 30px;
+    margin: 0;
+  }
+
+  .hosoku{
+    width: 900px;
+  }
+  ul{
+    flex-direction: column;
+    padding-left:  50px;
+  }
+  .log{
+    height: 200px;
+    width: 200px;
+  }
+  small{
+    font-size: 23px;
+  }
+}
