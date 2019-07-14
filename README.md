@@ -1,120 +1,119 @@
 ## ER図
 
-[![Image from Gyazo](https://i.gyazo.com/4f52d1d61945858a787b86ba7d63efd2.png)](https://gyazo.com/4f52d1d61945858a787b86ba7d63efd2)
+[![Image from Gyazo](https://i.gyazo.com/239df1f1bd84b7c4da0dcb3084e36dd0.png)](https://gyazo.com/239df1f1bd84b7c4da0dcb3084e36dd0)
 
 ## Users
 
 |Column|Type|Options|
 |------|----|-------|
-|last-name|string|index: true, null: false|
-|first-name|string|index: true, null: false|
-|first-name-kana|string|index: true, null: false|
-|last-name-kana|string|index: true, null: false|
+|id| | |
+|nickname|string|null: false|
 |mail|string|null: false|
-|password|string|null: false|
-|phone|integer|null: false|
-|birthday|data|null: false|
+|created_at|datetime|null: false|
+|updated_at|datetime|null: false|
 
 ### Association
-- has_one :profile
-- has_many :buyers
-- has_many :addresses
-- has_many :cards
-- has_many :products
-- has_many :comments, dependent: :destroy
-- has_many :likes
-- has_many :reviews
+- has_one :profile, optional: true, depandent: :delete
+- has_many :products, through likes, through: users_products, dependent: :destroy
+- has_many_active_hash :evaluations, through: :users_evaluations, dependent: :destroy
 
 ## Profiles
 
 |Column|Type|Options|
 |------|----|-------|
-|nickname|string|null: flase|
-|avatar|string| |
-|description|text| |
-|user_id|references|null: false, foreign_key: true|
-
-### Association
-- belongs_to :user
-
-## Addresses
-
-|Column|Type|Options|
-|------|----|-------|
-|user_id|references|null: false, foreign_key: true|
-|full-name|string|index: true, null: false|
-|full-name-kana|string|index: true, null: false|
-|zip|integer|null: false|
+|id| | |
+|first_name|string|null: flase|
+|last_name|string|null: false|
+|first_name_kana|string|null: false |
+|last_name_kana|string|null: false|
+|birthday|integer|null: false|
+|zip|string|null: false|
 |prefecture_id|references|null: false, foreign_key: true|
+|city|string|null: false|
 |address|string|null: false|
-|phone|integer|null: false|
+|building|string| |
+|phone|string|null: false|
+|user_id|references|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :user
+- belongs_to_active_hash :prefecture
 
-## Cards
+## Prefectures
 
 |Column|Type|Options|
 |------|----|-------|
+|id| | |
+|prefecture|string|null: false, active-hash|
+
+### Association
+- has_many :profiles
+- belongs_to :product
+
+## Users_products
+
+|Column|Type|Options|
+|------|----|-------|
+|id| | |
 |user_id|references|null: false, foreign_key: true|
-|number|integer|null: false|
-|valid_year|integer|null: false|
-|valid_month|integer|null: false|
+|product_id|references|null: false, foreign_key: true|
+|payjp_id|references|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :user
+- belongs_to :item
+- belongs_to :payjp
 
 ## Products
 
 |Column|Type|Options|
 |------|----|-------|
-|name|string|index: true, null: false|
+|id| | |
+|product_name|text|null: false|
 |description|text|null: false|
 |price|integer|null: false|
 |category_id|references|null: false, foreign_key: true|
-|brand_id|references|foreign_key: true|
-|size_id|references|foreign_key: true|
-|condition_id|references|null: false, foreign_key: true|
-|shipping-fee_id|references|null: false, foreign_key: true|
-|delivery_method_id|references|foreign_key: true|
+|brand_id|references|null: false, foreign_key: true|
+|size_id|references|null: false, foreign_key: true|
+|shipping_fee_id|references|null: false, foreign_key: true|
+|delivery_method_id|references|null: false, foreign_key: true|
 |prefecture_id|references|null: false, foreign_key: true|
 |delivery_time_id|references|null: false, foreign_key: true|
 |status_id|references|null: false, foreign_key: true|
 |user_id|references|null: false, foreign_key: true|
+|created_at|daytime|null: false|
+|updated_at|daytime|null: false|
 
 ### Association
 - belongs_to :user
 - has_many :product_images
-- has_many :comments
-- has_many :likes
-- has_many :buyers
+- has_many :users, through: :users_products
+- has_many :users, through: :likes
+- belongs_to :category
+- belongs_to_active_hash :size
+- belongs_to_active_hash :status
+- belongs_to_active_hash :brand
+- belongs_to_active_hash :shipping_fee_payer
+- belongs_to_active_hash :delivery_method
+- belongs_to_active_hash :prefecture
+- belongs_to_active_hash :delivery_time
 
-## Product_image
+## Product_images
 
 |Column|Type|Options|
 |------|----|-------|
+|id| | |
 |image|string|null: false|
 |product_id|references|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :product
 
-## Comments
-
-|Column|Type|Options|
-|------|----|-------|
-|user_id|references|null: false, foreign_key: true|
-|product_id|references|null: false, foreign_key: true|
-|comment|text|null: false|
-
-### Association
-- belongs_to :product
-- belongs_to :user
-
 ## Likes
 
 |Column|Type|Options|
 |------|----|-------|
+|id| | |
 |user_id|references|null: false, foreign_key: true|
 |product_id|references|null: false, foreign_key: true|
 
@@ -122,140 +121,101 @@
 - belongs_to :product
 - belongs_to :user
 
-## Buyer
+## Categories
 
 |Column|Type|Options|
 |------|----|-------|
-|user_id|references|null: false, foreign_key: true|
-|product_id|references|null: false, foreign_key: true|
-|address_id|references|null: false, foreign_key: true|
-|support_id|references|null: false, foreign_key: true|
-|message_id|references|foreign_key: true|
+|id| | |
+|main_category_id|references|null: false, foreign_key: true, active-hash|
+|middle_category_id|references|null: false, foreign_key: true, active-hash|
+|small_category_id|references|null: false, foreign_key: true, active-hash|
+
 
 ### Association
-- belongs_to :product
-- belongs_to :user
-
-## Reviews
-
-|Column|Type|Options|
-|------|----|-------|
-|user_id|references|null: false, foreign_key: true|
-|product_id|references|null: false, foreign_key: true|
-|evalation_id|references|null: false, foreign_key: true|
-
-### Association
-- beloungs_to :buyer
-- belongs_to :user
-
-## Messages
-
-|Column|Type|Options|
-|------|----|-------|
-|user_id|references|null: false, foreign_key: true|
-|buyer_id|references|null: false, foreign_key: true|
-|message|text|null: false, foreign_key: true|
-
-### Association
-- belongs_to :buyer
-- belongs_to :user
-
-## Main_categories
-
-|Column|Type|Options|
-|------|----|-------|
-|name|string|index: true, null: false|
-
-## Middle_categories
-
-|Column|Type|Options|
-|------|----|-------|
-|name|string|index: true, null: false|
-|main_category_id|references|null: false, foreign_ky: true|
-
-## Small_categories
-
-|Column|Type|Options|
-|------|----|-------|
-|name|string|index: true, null: false|
-|main_category_id|references|null: false, foreign_key: true|
+- has_many :products
+- has_many :sizes, through :sizes_categories
 
 ## Brands
 
-|Column|Type|Options|
+|Column|type|Options|
 |------|----|-------|
-|name|string|index: true, null: false|
+|id| | |
+|brand_name|string|null: false|
 
-## Size
+### Association
+- has_many :products
 
-|Column|Type|Options|
-|------|----|-------|
-|name|string|index: true, null: false|
-
-## Category_brand
-
-|Column|Type|Options|
-|------|----|-------|
-|small_category_id|references|null: false, foreign_key: true|
-|brand_id|references|null: false, foreign_key: true|
-
-## Category_size
+## Sizes
 
 |Column|Type|Options|
 |------|----|-------|
-|small_category_id|references|null: false, foreign_key: true|
-|size_id|references|null: false, foreign_key: true|
+|id| | |
+|size|string|null: false, active-hash|
 
-## Conditions
+### Association
+- has_many :products
+- belongs_to :category, through: :sizes_categories
 
-|Column|Type|Options|
-|------|----|-------|
-|name|string|index: true, null: false|
-
-## Shipping-fee
+## Sizes_categories
 
 |Column|Type|Options|
 |------|----|-------|
-|name|string|index: true, null: false|
+|id| | |
+|category_id|references|null: false, foreign_key: true, active-hash|
+|size_id|references|null: false, foreign_key: true, active-hash|
 
-## Delivery_method
+### Association
+- belongs_to_active_hash :size
+- belongs_to_active_hash :category
 
-|Column|Type|Options|
-|------|----|-------|
-|name|string|index: true, null: false|
-
-## Prefecture
-
-|Column|Type|Options|
-|------|----|-------|
-|name|string|index: true, null: false|
-
-## Delivery_time
+## Shipping_fee_payers
 
 |Column|Type|Options|
 |------|----|-------|
-|name|string|index: true, null: false|
+|id| | |
+|payer_name|string|null: false, active-hash|
+
+### Association
+- has_many :products
+
+## Delivery_times
+
+|Column|Type|Options|
+|------|----|-------|
+|id| | |
+|delivery_times|string|null: false, active-hash|
+
+### Association
+- has_many :products
 
 ## Status
 
 |Column|Type|Options|
 |------|----|-------|
-|name|string|index: true, null: false|
+|id| | |
+|status|string|null: false, active-hash|
+
+### Association
+- has_many :products
 
 ## Evaluations
 
 |Column|Type|Options|
 |------|----|-------|
-|name|string|index: true, null: false|
+|id| | |
+|evaluation|integer|null: false, active-hash|
 
-## Position
+### Association
+- has_many :users, through :users_evaluations
 
-|Column|Type|Options|
-|------|----|-------|
-|name|string|index: true, null: false|
-
-## Support
+## Users_evaluations
 
 |Column|Type|Options|
 |------|----|-------|
-|name|string|index: true, null: false|
+|id| | |
+|evaluation_id|references|null: false, foreign_key: true|
+|user_id|references|null: false, foreign_key: true|
+
+### Association
+- belongs_to :user
+- belongs_to_active_hash :evaluation
