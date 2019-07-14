@@ -13,8 +13,8 @@
 |updated_at|datetime|null: false|
 
 ### Association
-- has_one :profile, optional: true, depandent: :delete
-- has_many :products, through likes, through: users_products, dependent: :destroy
+- has_one :profile, optional: true, dependent: :delete
+- has_many :products, through: :likes, through: :users_products, dependent: :destroy
 - has_many_active_hash :evaluations, through: :users_evaluations, dependent: :destroy
 
 ## Profiles
@@ -32,7 +32,7 @@
 |city|string|null: false|
 |address|string|null: false|
 |building|string| |
-|phone|string|null: false|
+|phone_number|string|null: false|
 |user_id|references|null: false, foreign_key: true|
 
 ### Association
@@ -206,7 +206,7 @@
 |evaluation|integer|null: false, active-hash|
 
 ### Association
-- has_many :users, through :users_evaluations
+- has_many :users, through: :users_evaluations
 
 ## Users_evaluations
 
