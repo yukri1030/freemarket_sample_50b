@@ -22,6 +22,13 @@ set :unicorn_pid, -> { "#{shared_path}/tmp/pids/unicorn.pid" }
 set :unicorn_config_path, -> { "#{current_path}/config/unicorn.rb" }
 set :keep_releases, 5
 
+set :default_env, {
+  rbenv_root: "/usr/local/rbenv",
+  path: "/usr/local/rbenv/shims:/usr/local/rbenv/bin:$PATH",
+  AWS_ACCESS_KEY_ID: ENV["AWS_ACCESS_KEY_ID"],
+  AWS_SECRET_ACCESS_KEY: ENV["AWS_SECRET_ACCESS_KEY"]
+}
+
 # デプロイ処理が終わった後、Unicornを再起動するための記述
 after 'deploy:publishing', 'deploy:restart'
 namespace :deploy do
@@ -29,3 +36,5 @@ namespace :deploy do
     invoke 'unicorn:restart'
   end
 end
+
+append :linked_files, 'config/database.yml', 'config/master.key'
