@@ -1,0 +1,19 @@
+.zentai 
+  .header
+    = image_tag "logo.svg",  class: "image_sign_up"
+    = image_tag 'signup_header2.png', class: "data__img"
+  .contents
+    .contents-box
+      .contents-box__title
+        %h 電話番号確認
+      .contents-box__input
+        .input-box
+          .phone_number
+            %label 携帯電話の電話番号
+            %input{placeholder: "携帯の電話番号を入力"}
+          %p 本人確認のため、携帯電話のSMS(ショートメッセージサービス)を利用して認証を行います。
+          %button SMSを送信する
+          %p.tyuui ※電話番号は本人確認や不正利用防止のために利用します。他のユーザーに公開されることはありません。
+          %h1
+          =link_to "電話番号の確認が必要な場合＞",color: "light-blue"
+  = render partial:'footer'
