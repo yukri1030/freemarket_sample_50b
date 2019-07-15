@@ -76,4 +76,6 @@ gem 'erb2haml'
 gem 'font-awesome-rails'
 gem 'carrierwave'
 gem 'fog-aws'
-gem "aws-sdk-s3", require: false
+# gem "aws-sdk-s3", require: false
+
+
