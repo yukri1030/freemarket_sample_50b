@@ -71,6 +71,7 @@
 |id| | |
 |product_name|text|null: false|
 |description|text|null: false|
+|status|integer|null: false|
 |price|integer|null: false|
 |category_id|references|null: false, foreign_key: true|
 |brand_id|references|null: false, foreign_key: true|
@@ -79,7 +80,6 @@
 |delivery_method_id|references|null: false, foreign_key: true|
 |prefecture_id|references|null: false, foreign_key: true|
 |delivery_time_id|references|null: false, foreign_key: true|
-|status_id|references|null: false, foreign_key: true|
 |user_id|references|null: false, foreign_key: true|
 |created_at|daytime|null: false|
 |updated_at|daytime|null: false|
@@ -91,7 +91,6 @@
 - has_many :users, through: :likes
 - belongs_to :category
 - belongs_to_active_hash :size
-- belongs_to_active_hash :status
 - belongs_to_active_hash :brand
 - belongs_to_active_hash :shipping_fee_payer
 - belongs_to_active_hash :delivery_method
@@ -184,16 +183,6 @@
 |------|----|-------|
 |id| | |
 |delivery_times|string|null: false, active-hash|
-
-### Association
-- has_many :products
-
-## Status
-
-|Column|Type|Options|
-|------|----|-------|
-|id| | |
-|status|string|null: false, active-hash|
 
 ### Association
 - has_many :products
