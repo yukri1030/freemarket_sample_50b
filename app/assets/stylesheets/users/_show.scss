@@ -1,5 +1,7 @@
 .zentai{
   background: #f5f5f5;
+  overflow-y: hidden;
+  height: 850px
 }
 .header{
   height: 120px;
@@ -100,6 +102,7 @@
 .footer{
   height: 220px;
   font-size: 5px;
+  margin-bottom: 20px;
 }
 
 .hosoku{
