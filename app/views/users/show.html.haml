@@ -56,15 +56,25 @@
               %li
                 %label 生年月日
                 %span 必須
+            %ul
               %li
-              %input{class: "birthday", placeholder: "-- ",autocomplete: "off"} 年
-              %input{class: "birthday", placeholder: "-- ",autocomplete: "off"} 月
-              %input{class: "birthday", placeholder: "-- ",autocomplete: "off"} 日
+                %h.birthday
+                = select_tag('year',options_for_select(1900..2019),include_blank: '---',class: "birthday")
+                %span.tosi 年
+                %h.birthday2
+                = select_tag('year',options_for_select(1..12),include_blank: '---',class: "birthday2")
+                %span.tosi 月
+                %h.birthday
+                = select_tag('year',options_for_select(1..31),include_blank: '---',class: "birthday")
+                %span.tosi 日
+              -# %input{class: "birthday", placeholder: "-- ",autocomplete: "off"} 年
+              -# %input{class: "birthday", placeholder: "-- ",autocomplete: "off"} 月
+              -# %input{class: "birthday", placeholder: "-- ",autocomplete: "off"} 日
 
             %ul
               %p.gray ※本人情報は正しく入力してください。会員登録後、修正するにはお時間をいただく場合があります。
             .checkbox 
-            = image_tag 'rbot-img.png',size:"400x100"
+            = image_tag 'rbot-img.png'
             %ul.susum
               %h
                 「次へ進む」のボタンを押すことにより、
