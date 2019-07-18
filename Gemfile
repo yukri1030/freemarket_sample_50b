@@ -26,7 +26,6 @@ gem 'jbuilder', '~> 2.5'
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
-
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 
@@ -69,13 +68,12 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 group :production do
   gem 'unicorn', '5.4.1'
 end
-
 # haml
 gem 'haml-rails'
 gem 'erb2haml'
 gem 'font-awesome-rails'
+gem 'devise'
 gem 'carrierwave'
 gem 'fog-aws'
+
 # gem "aws-sdk-s3", require: false
-
-
