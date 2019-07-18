@@ -1,114 +1,157 @@
 .zentai{
-  background: #f5f5f5;
-  overflow-y: hidden;
-  height: 850px
+  background-color: #f5f5f5;
 }
 .header{
-  height: 120px;
-  padding: 10px 0 5px 0;
-
+  height: 100px;
+  padding: 25px 0;
 }
-
 .image_sign_up{
-  padding-left: 370px;
-  margin-bottom: 50px;
-  width: 170px;
-  margin-bottom: 40px;
+  padding-left: 300px;
+  margin-bottom: 60px;
 }
 .data__img{
-  height: 100px;
-  width: 500px;
-  padding-left: 35px;
-  margin-bottom: 20px;
+  padding-left: 60px;
+  margin-bottom: 40px;
 }
 
 .contents{
-  height: 450px;
-  margin-bottom: 50px;
+  padding-bottom: 50px;
 
-}
-.contents-box{
-  width: 700px;
-  height: 450px;
-  background: white;
-  margin: 0 auto;
-  
-
-  &__title{
-    height: 100px;
+  .contents-box{
+    margin: auto;
     width: 700px;
-    border-bottom: 0.09px solid rgb(230, 230, 230); 
-    text-align: center; 
-    line-height: 100px;
-    font-family: bold;
-  }
-  h{
-    font-size: 20px;
-    font-weight: 600;
-  }
-
-  &__input{
-    height: 300px;
-    padding: 20px;
-  }
-
-  .input-box{
-    padding-left: 150px;
-    height: 320px;
-    width: 450px;
+    height: 1350px;
+    background-color: white;
+    .customer_data_input{
+      font-weight: bold;
+      font-size: 20px;
+      text-align: center;
+      padding: 30px;
+      border-bottom: 0.09px solid #eee;
     }
-  .phone_number{
-    height: 80px;
-    font-size: 15px;
   }
-  label{
-    font-weight: 600;
-    margin-bottom: 15px;
-  }
-  input{
-    height: 48px;
-    width: 350px;
-    border-radius: 3px;
-    padding-left: 15px;
-    margin: 8px 0 0 0 ;
-    border: 1px solid #ccc;
-  }
-  p{
-    width: 375px;
-    font-size: 13px;
-    margin: 8px 0 0;
-  }
-  button{
-    @extend input;
-    width: 370px;
-    margin: 30px 0px 0 0;
-    background: red;
-    text-align: center;
-    color: white;
-    font-size: 13px;
-    padding: 0;
-  }
-  .tyuui{
-    width: 365px;
-  }
-   a {
-    width: 365px;
-    color: #6495ed;
-    font-size: 13px;
-    padding-left: 95px;
+  .input_box{
+    padding: 40px;
+
+      .input_box1{
+        padding: 0 100px;
+
+        .nickname{
+          margin: 0 atuo;
+          padding-left: 40px;
+        }
+
+        ul{
+          margin: 0 atuo;
+          bottom: 30px;
+          width: 355px;
+        }
+
+        label{
+          font-weight: bold;
+          font-size: 14px;
+          padding-right: 8px;
+        }
+
+         span{
+          background: red;
+          padding: 2px 4px;
+          border-radius: 2px;
+          color: white;
+          font-size: 13px;
+        }
+        input{
+          height: 45px;
+          width: 340px;
+          margin: 5px 0 20px 0;
+          padding-left: 10px;
+          border-radius: 3px;
+          border: 1px solid #ccc;
+          font-size: 16px;
+        }
+        p{
+          font-size: 13px;
+          line-height: 20px;
+        }
+        .confirm{
+          height: 80px;
+          width: 340;
+        }
+        .fast-name{
+          width: 150px;
+        }
+        .last-name{
+          width: 150px;
+          margin-left: 7px;
+        }
+        .birthday{
+          height: 50px;
+          width: 70px;
+          background: none
+        }
+        .tosi{
+          background: none;
+          font-size: 12px;
+          color: black;
+          padding: 2px 2px;
+        }
+        .birthday2{
+          height: 50px;
+          width: 70px;
+          margin: 5px 0 5px 7px;
+          margin-left: 0;
+          background: none;
+        }
+        .gray{
+          width: 350px;
+          margin-bottom: 22px;
+          color: #888;
+          font-size: 13px;
+        }
+
+        img{
+          width: 350px;
+          height: 100px;
+        }
+          
+        .susum{
+          margin-top: 10px;
+          text-align: center;
+          font-size: 13px;
+          text-decoration: none;
+        }
+
+        a{
+          text-decoration: none;
+          color: #0099e8;
+        }
+        
+        .next{
+          font-size: 15px;
+          height: 50px;
+          width: 360px;
+          margin: 32px 0 30px 0;
+          background: #ea352d;
+          border: 1px solid #ea352d;
+          color: white;
+        }
+      .touroku{
+        width: 200px;
+        margin-left: 200px;
+      }
+
+    }
   }
 }
 
 .footer{
   height: 220px;
   font-size: 5px;
-  margin-bottom: 20px;
-}
+
 
 .hosoku{
   width: 800px;
   margin: auto;
-  margin-left: 350px;
 }
   
   nav{
@@ -139,11 +182,10 @@
     display: block;
     margin: 0 auto;
     margin-top: 10px;
-    margin-left: 350px;
     margin-bottom: 10px;
   }
   small{
     font-size: 11px;
     font-weight: none;
-    padding-right: 25px;
   }
+}

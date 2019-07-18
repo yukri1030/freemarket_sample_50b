@@ -1,19 +1,89 @@
-.zentai 
+.zentai
   .header
-    = image_tag "logo.svg",  class: "image_sign_up"
-    = image_tag 'signup_header2.png', class: "data__img"
+    = image_tag "logo.svg", width:  "200", height: "50", class: "image_sign_up"
+    = image_tag 'signup_header1.png',size: "500x80" , class: "data__img"
   .contents
     .contents-box
-      .contents-box__title
-        %h 電話番号確認
-      .contents-box__input
-        .input-box
-          .phone_number
-            %label 携帯電話の電話番号
-            %input{placeholder: "携帯の電話番号を入力"}
-          %p 本人確認のため、携帯電話のSMS(ショートメッセージサービス)を利用して認証を行います。
-          %button SMSを送信する
-          %p.tyuui ※電話番号は本人確認や不正利用防止のために利用します。他のユーザーに公開されることはありません。
-          %h1
-          =link_to "電話番号の確認が必要な場合＞",color: "light-blue"
+      .customer_data_input 会員情報入力
+      .input_box
+        .input_box1
+          .nickname
+            %ul
+              %li
+                %label ニックネーム
+                %span 必須
+              %li
+              %input{placeholder: "例) メルカリ太郎",autocomplete: "off"}
+            %ul
+              %li
+                %label メールアドレス
+                %span 必須
+              %li
+              %input{placeholder: "例) PC・携帯どちらでも可",autocomplete: "off"}
+            %ul
+              %li
+                %label パスワード
+                %span 必須
+              %li
+              %input{placeholder: "例) 6文字以上",autocomplete: "off"}
+            %ul
+              %li
+                %label パスワード（確認）
+                %span 必須
+              %li
+              %input{placeholder: "例) 6文字以上",autocomplete: "off"}
+              %li
+            %ul
+              %label 本人確認
+              %li
+                %p.confirm 安心・安全にご利用いただくために、お客さまの本人情報の登録にご協力ください。他のお客さまに公開されることはありません。
+            %ul
+              %li
+                %label お名前（全角）
+                %span 必須
+              %li
+                %input{class: "fast-name", placeholder: "例) 山田",autocomplete: "off"}
+                %input{class: "last-name", placeholder: "例) 彩",autocomplete: "off"}
+            %ul
+              %li
+                %label お名前カナ（全角）
+                %span 必須
+              %li
+                %input{class: "fast-name", placeholder: "例) ヤマダ",autocomplete: "off"}
+                %input{class: "last-name", placeholder: "例) アヤ",autocomplete: "off"}
+              %li
+            %ul
+              %li
+                %label 生年月日
+                %span 必須
+            %ul
+              %li
+                %h.birthday
+                = select_tag('year',options_for_select(1900..2019),include_blank: '---',class: "birthday")
+                %span.tosi 年
+                %h.birthday2
+                = select_tag('year',options_for_select(1..12),include_blank: '---',class: "birthday2")
+                %span.tosi 月
+                %h.birthday
+                = select_tag('year',options_for_select(1..31),include_blank: '---',class: "birthday")
+                %span.tosi 日
+              -# %input{class: "birthday", placeholder: "-- ",autocomplete: "off"} 年
+              -# %input{class: "birthday", placeholder: "-- ",autocomplete: "off"} 月
+              -# %input{class: "birthday", placeholder: "-- ",autocomplete: "off"} 日
+
+            %ul
+              %p.gray ※本人情報は正しく入力してください。会員登録後、修正するにはお時間をいただく場合があります。
+            .checkbox 
+            = image_tag 'rbot-img.png'
+            %ul.susum
+              %h
+                「次へ進む」のボタンを押すことにより、
+                %h.rule 
+                = link_to "利用規約",color: "lightblue"
+                %h に同意したものとみなします
+            %ul
+              %button{class: "next", autocomplete: "off"}次に進む
+            .touroku 
+              = link_to "本人登録の情報について＞",class: "touroku", color:"lightblue"
+            
   = render partial:'footer'
