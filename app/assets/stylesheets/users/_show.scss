@@ -1,0 +1,154 @@
+.subete{
+  background-color: #f5f5f5;
+  
+}
+.zyoubu{
+  height: 100px;
+  padding: 25px 0;
+}
+.gazo{
+  height: 50px;
+  width: 200px;
+  padding-left: 300px;
+  margin-bottom: 60px;
+}
+.data{
+  height: 80px;
+  width: 500px;
+  padding-left: 60px;
+  margin-bottom: 40px;
+}
+
+.box{
+  margin: auto;
+  margin-bottom: 50px;
+  width: 700px;
+  height: 1100px;
+  background-color: white;
+
+  .customer_data_input{
+    font-weight: bold;
+    font-size: 20px;
+    text-align: center;
+    padding: 30px;
+    border-bottom: 0.09px solid #eee; 
+  }
+  
+    .form{
+      padding: 40px;
+
+        .form_box1{
+          padding: 0 135px;
+          margin: 0 auto; 
+
+          .frame{
+            margin: 0 atuo;
+          }
+
+          .list{
+            bottom: 30px;
+            width: 355px;
+            list-style: none;
+          }
+
+      .list2{
+        margin: 24px 0 0;
+        bottom: 30px;
+        width: 355px;
+        list-style: none;
+      }
+
+      .na{
+        font-weight: bold;
+        font-size: 14px;
+        padding-right: 8px;
+      }
+      .hituyo{
+        background: red;
+        padding: 2px 4px;
+        border-radius: 2px;
+        color: white;
+        font-size: 13px;
+      }
+      .ireru{
+        height: 45px;
+        width: 340px;
+        margin: 5px 0 5px 0;
+        padding-left: 10px;
+        border-radius: 3px;
+        border: 1px solid #ccc;
+        font-size: 16px;
+      }
+        .prefecture{
+          @extend input;
+          width: 350px;
+          background: white;
+          color: gray;
+        }
+      .tugi{
+        font-size: 15px;
+        height: 50px;
+        width: 360px;
+        margin: 32px 0 30px 0;
+        background: #ea352d;
+        border: 1px solid #ea352d;
+        color: white;
+        vertical-align: top;
+      }
+      .oke{
+        @extend .tugi;
+        background: lightgrey;
+        border: 1px solid;
+        background: #ccc;
+        padding: 2px 4px;
+      }
+    }
+  }
+}
+
+
+.footer{
+  height: 220px;
+  font-size: 5px;
+  margin-bottom: 20px;
+}
+
+.hosoku{
+  width: 800px;
+  margin: auto;
+}
+  
+  nav{
+    text-align: center;
+  }
+  @mixin clearfix{
+    text-align: center;
+  }
+  ul{
+    display: flex;
+    margin: 0 auto;
+    padding-left: 200px;
+  }
+  
+  a{
+    @include clearfix;
+    padding: 10px;
+    text-decoration: none;
+    color: black;
+    display: block;
+  }
+  .li_link{
+    @include clearfix;
+  }
+  .log{
+    height: 80px;
+    width: 80px;
+    display: block;
+    margin: 0 auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  small{
+    font-size: 11px;
+    font-weight: none;
+  }
