@@ -75,4 +75,6 @@ gem 'font-awesome-rails'
 gem 'devise'
 gem 'carrierwave'
 gem 'fog-aws'
+gem 'gon'
+gem "jquery-rails"
 # gem "aws-sdk-s3", require: false
