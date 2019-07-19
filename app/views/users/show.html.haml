@@ -1,0 +1,58 @@
+.subete
+  .zyoubu
+    = image_tag "logo.svg",  class: "gazo"
+    = image_tag 'signup_header3.png',size: "500x80" , class: "data"
+  .box
+    .customer_data_input 発送元・お届け先住所
+    .form
+      .form_box1
+        .frame
+          .list
+            %li
+              %label.na お名前
+              %span.hituyo 必須
+            %li
+              %input{placeholder: "例) 山田",autocomplete: "off", class: "ireru"}
+              %input{placeholder: "例) 彩",autocomplete: "off", class: "ireru"}
+          .list2
+            %li
+              %label.na お名前カナ
+              %span.hituyo 必須
+            %li
+              %input{placeholder: "例) ヤマダ",autocomplete: "off", class: "ireru"}
+              %input{placeholder: "例) アヤ",autocomplete: "off", class: "ireru"}
+          .list2
+            %li
+              %label.na  郵便番号
+              %span.hituyo 必須
+            %li
+              %input{placeholder: "例) 123-4567",autocomplete: "off", class: "ireru"}
+          .list2
+            %li
+              %label.na 都道府県
+              %span.hituyo 必須
+            %li
+              %select{ include_blank: "北海道", class: "prefecture", class: "prefecture"}
+                = render 'prefecture'
+          .list2
+            %li
+              %label.na 市町村
+              %span.hituyo 必須
+            %li
+              %input{placeholder: "例) 横浜市緑区",autocomplete: "off", class: "ireru"}                  
+          .list2
+            %li
+              %label.na 番地
+              %span.oke 任意
+            %li
+              %input{placeholder: "例) 柳ビル123",autocomplete: "off", class: "ireru"}
+          .list2
+            %li
+              %label.na 電話
+              %span.oke 任意
+            %li
+              %input{placeholder: "例) 09012345678",autocomplete: "off", class: "ireru"}
+            %ul
+            %button{class: "tugi", autocomplete: "off"}次に進む
+
+  = render partial:'shared/footer'

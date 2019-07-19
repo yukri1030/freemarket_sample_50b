@@ -1,0 +1,21 @@
+.oki
+  .header
+    = image_tag "logo.svg", class: "syasin"
+    = image_tag 'signup_header2.png', class: "merukari_syasin"
+  .white
+    .white-box
+      .white-box__title
+        %h.denwa 電話番号確認
+      .white-box__input
+        .kaku
+          .check
+            %label.check1 携帯電話の電話番号
+            %input{placeholder: "携帯の電話番号を入力", class: "keitai"}
+            %p.zisin 本人確認のため、携帯電話のSMS(ショートメッセージサービス)を利用して認証を行います。
+            %button.sms SMSを送信する
+            %p.ryui ※電話番号は本人確認や不正利用防止のために利用します。他のユーザーに公開されることはありません。
+          .bai
+            =link_to "電話番号の確認が必要な場合＞",color: "light-blue",class: "bai"
+  = render partial:'shared/footer'
+
+     
