@@ -6,7 +6,10 @@
 @import "./mixin/mq";
 @import "font-awesome";
 @import "partials/*";
+@import "profiles/profile_new";
 @import "top";
+@import "users/user_show";
+@import "users/user_new";
 
 html,
 body {
