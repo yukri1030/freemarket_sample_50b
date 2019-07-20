@@ -75,3 +75,4 @@ gem 'font-awesome-rails'
 gem 'devise'
 gem 'gon'
 gem "jquery-rails"
+gem 'active_hash'
