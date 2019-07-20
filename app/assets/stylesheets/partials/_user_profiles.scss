@@ -1,15 +1,18 @@
 // new
 header {
+  margin: auto;
   height: 100px;
   padding-top: 40px;
+  margin-bottom: 5px;
+  width: 930px;
+  position: relative;
 
   .header__logo-img_signup {
+    position: absolute;
+  }
+  .header__bar-img {
     display: block;
-
-    margin: {
-      bottom: 30px;
-      left: 70px;
-    }
+    float: right;
   }
 }
 
@@ -69,7 +72,7 @@ header {
       }
 
       .form {
-        border:1px solid $border_gray {
+        border: 1px solid $border_gray {
           radius: 0.3rem;
         }
       }
@@ -80,7 +83,6 @@ header {
         height: 50px;
         font-size: 16px;
         margin-bottom: 20px;
-        color: $form_gray;
         padding-left: 10px;
       }
     }
@@ -93,18 +95,22 @@ header {
 
       margin: {
         top: 19px;
-        ;
       }
-
-      a {
+      color: $white;
+      input {
         color: $white;
-        font-size: 0.9rem;
         display: inline;
         text-decoration: none;
       }
     }
   }
-
+  input.next_btn {
+    color: $white;
+    background-color: $red;
+    width: 410px;
+    padding: 13px;
+    text-align: center;
+  }
   .select-tag {
     @extend .form;
     width: 100px;
@@ -122,9 +128,9 @@ header {
       left: 110px;
     }
 
-    #id_prefecture_id {
-      padding-top: 16px;
-      color: $form_gray;
+    #profile_address_prefecture {
+      height: 52px;
+      width: 100px;
     }
   }
 
