@@ -1,0 +1,141 @@
+.oki{
+  background-color: #f5f5f5;
+}
+.header{
+  height: 100px;
+  padding: 25px 0;
+}
+.syasin{
+  width: 200px;
+  height: 50px;
+  padding-left: 300px;
+  margin-bottom: 60px;
+}
+.merukari_syasin{
+  height: 80px;
+  width: 500px;
+  padding-left: 60px;
+  margin-bottom: 40px;
+}
+.white{
+  height: 450px;
+  margin-bottom: 50px;
+
+}
+.white-box{
+  width: 700px;
+  height: 450px;
+  background: white;
+  margin: 0 auto;
+
+     &__title{
+    height: 100px;
+    width: 700px;
+    border-bottom: 0.09px solid rgb(230, 230, 230); 
+    text-align: center; 
+    line-height: 100px;
+    font-family: bold;
+  }
+  .denwa{
+    font-size: 20px;
+    font-weight: 600;
+  }
+
+  &__input{
+    height: 300px;
+    padding: 20px;
+  }
+
+  .kaku{
+    padding-left: 150px;
+    height: 320px;
+    width: 450px;
+    }
+  .ckeck{
+    height: 80px;
+    font-size: 15px;
+  }
+  .check1{
+    font-weight: 600;
+    margin-bottom: 15px;
+  }
+  .keitai{
+    height: 48px;
+    width: 350px;
+    border-radius: 3px;
+    padding-left: 15px;
+    margin: 8px 0 0 0 ;
+    border: 1px solid #ccc;
+  }
+  .zisin{
+    width: 375px;
+    font-size: 13px;
+    margin: 8px 0 0;
+  }
+  .sms{
+    @extend .keitai;
+    width: 370px;
+    margin: 30px 0px 0 0;
+    background: red;
+    text-align: center;
+    color: white;
+    font-size: 13px;
+    padding: 0;
+  }
+  .ryui{
+    @extend .zisin;
+    width: 365px;
+  }
+  .bai{
+    margin-top: 20px;
+  }
+   .bai a{
+    width: 365px;
+    color: #0099e8;
+    font-size: 13px;
+    padding-left: 200px;
+    text-decoration:none;
+  }
+}
+
+
+.footer{
+  height: 220px;
+  font-size: 5px;
+  margin-bottom: 20px;
+}
+
+.hosoku{
+  width: 800px;
+  margin: auto;
+}
+  
+  .nav{
+    text-align: center;
+  }
+  
+  .clear ul{
+    display: flex;
+    margin: 0 auto;
+    padding-left: 200px;
+  }
+  
+  .li_link a{
+    color: black;
+    display: inline;
+    text-decoration: none;
+    text-align: center;
+    margin-left: 30px;
+  }
+  .log{
+    height: 80px;
+    width: 80px;
+    display: block;
+    margin: 0 auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  .small{
+    font-size: 11px;
+    font-weight: none;
+  }
