@@ -1,0 +1,436 @@
+// index
+.credit {
+  background-color: $white;
+  width: 700px;
+  height: 360px;
+  float: left;
+  margin-top: 31px;
+
+  &__title {
+    height: 50px;
+    line-height: 50px;
+    border-bottom: 0.09px solid $border_gray;
+    font-size: 24px;
+
+    h2 {
+      font-weight: 600;
+      text-align: center;
+    }
+  }
+
+  &__box_list {
+    padding: {
+      top: 64px;
+      right: 150px;
+      left: 200px;
+    }
+
+    p {
+      font: {
+        weight: 600;
+        size: 15px;
+      }
+    }
+  }
+
+  &__btn_add {
+    background-color: $red;
+    width: 300px;
+    padding: 13px;
+    text-align: center;
+
+    margin: {
+      top: 19px;
+    }
+
+
+    a {
+      color: $white;
+      font-size: 0.9rem;
+      display: inline;
+      text-decoration: none;
+    }
+
+    .credit-card {
+      color: $white;
+      margin-right: 5px;
+      margin-top: 3px;
+    }
+  }
+
+  .credit__btn_add:hover {
+    opacity: 0.8;
+  }
+
+  .box__bottom_line {
+    margin: 0 auto;
+    width: 600px;
+    height: 35px;
+    border-bottom: 0.09px solid $border_gray;
+  }
+
+  .credit__box_link {
+    margin: {
+      top: 40px;
+      left: 500px;
+    }
+
+    p {
+      color: $light_blue;
+      font-size: 14px;
+      float: left;
+    }
+
+    .arrow_blue {
+      color: $light_blue;
+      font-size: 15px;
+      padding-left: 3px;
+      margin-top: 2px;
+    }
+  }
+}
+
+// edit
+.credit_2 {
+  background-color: $white;
+  width: 700px;
+  height: 750px;
+  float: left;
+  margin-top: 31px;
+
+  .credit__box_list {
+    position: relative;
+
+    span {
+      font: {
+        weight: 600;
+        size: 15px;
+      }
+    }
+
+    .required__icon {
+      display: inline;
+    }
+
+    .form {
+      border: 1px solid $border_gray {
+        radius: 0.3rem;
+      }
+    }
+
+    .text_field {
+      @extend .form;
+      width: 310px;
+      height: 50px;
+      font-size: 16px;
+      color: $form_gray;
+      padding-left: 10px;
+
+      margin: {
+        bottom: 5px;
+        top: 6px;
+      }
+    }
+  }
+
+  .select_tag {
+    @extend .form;
+    width: 100px;
+    height: 50px;
+    font-size: 16px;
+    color: $form_gray;
+    padding-left: 15px;
+
+    margin: {
+      bottom: 20px;
+      top: 7px;
+    }
+  }
+
+  i.fa_icon_1 {
+    color: $fa_icon_gray;
+    position: absolute;
+    top: 278px;
+    left: 275px;
+  }
+
+  i.fa_icon_2 {
+    color: $fa_icon_gray;
+    position: absolute;
+    top: 354px;
+    left: 275px;
+  }
+
+  .credit__box_question {
+    margin-left: 150px;
+
+    span.icon_question {
+      background-color: $light_blue;
+      border-radius: 10px;
+      padding: 1px 4px;
+      color: $white;
+      float: left;
+
+      margin: {
+        right: 4px;
+        top: 3px;
+      }
+
+      font: {
+        size: 0.1rem;
+        weight: bold;
+      }
+    }
+
+    p {
+      color: $light_blue;
+      display: inline-block;
+
+      font: {
+        size: 14px;
+        weight: 100;
+      }
+    }
+  }
+}
+
+a {
+  color: $white;
+  font-size: 0.9rem;
+  display: inline;
+  text-decoration: none;
+}
+
+// new
+header {
+  height: 100px;
+  padding-top: 40px;
+
+  .header__logo-img {
+    display: block;
+
+    margin: 0 auto {
+      bottom: 30px;
+    }
+  }
+}
+
+.credit_3 {
+  background-color: $white;
+  width: 700px;
+  height: 730px;
+  margin-top: 31px;
+  margin: 0 auto;
+
+  .credit__box_list {
+    position: relative;
+
+    span {
+      font: {
+        weight: 600;
+        size: 15px;
+      }
+    }
+
+    .required__icon {
+      display: inline;
+    }
+
+    .form {
+      border:1px solid $border_gray {
+        radius: 0.3rem;
+      }
+    }
+
+    .text_field {
+      @extend .form;
+      width: 310px;
+      height: 50px;
+      font-size: 16px;
+      color: $form_gray;
+      padding-left: 10px;
+
+      margin: {
+        bottom: 5px;
+        top: 6px;
+      }
+    }
+  }
+
+  .select-tag {
+    @extend .form;
+    width: 90px;
+    height: 50px;
+    font-size: 16px;
+    color: $form_gray;
+    padding-left: 15px;
+
+    margin: {
+      bottom: 20px;
+      top: 7px;
+      left: 20px;
+    }
+  }
+
+  i.fa_icon_1 {
+    color: $fa_icon_gray;
+    position: absolute;
+    top: 278px;
+    left: 265px;
+  }
+
+  i.fa_icon_2 {
+    color: $fa_icon_gray;
+    position: absolute;
+    top: 342px;
+    left: 265px;
+  }
+
+  .credit__box_question {
+    margin-left: 150px;
+
+    span.icon_question {
+      background-color: $light_blue;
+      border-radius: 10px;
+      padding: 1px 4px;
+      color: $white;
+      float: left;
+
+      margin: {
+        right: 4px;
+        top: 3px;
+      }
+
+      font: {
+        size: 0.1rem;
+        weight: bold;
+      }
+    }
+
+    p {
+      color: $light_blue;
+      display: inline-block;
+
+      font: {
+        size: 14px;
+        weight: 100;
+      }
+    }
+  }
+}
+
+// show
+.sigup-complete {
+  width: 800px;
+  padding-bottom: 150px;
+  margin: 0 auto;
+  background-color: $white;
+  height: 500px;
+}
+
+.description {
+  margin-top: 10px;
+
+  .thanks {
+    font-size: 15px;
+    margin-left: 114px;
+  }
+
+  .complete {
+    font-size: 15px;
+    margin-left: 108px;
+  }
+}
+
+.start-btn {
+  background-color: $red;
+  width: 250px;
+  padding: 13px;
+  text-align: center;
+
+  padding: {
+    left: 30px;
+    right: 30px;
+  }
+
+  margin: {
+    top: 30px;
+    left: 250px;
+  }
+
+  a {
+    color: $white;
+    font-size: 0.9rem;
+    display: inline;
+    text-decoration: none;
+    text-align: center;
+  }
+}
+
+.register_complete_img {
+  margin-top: 40px;
+}
+
+// detail
+
+ #exp_year {
+  @extend .form;
+  width: 90px;
+  height: 50px;
+  font-size: 16px;
+  color: $form_gray;
+  padding-left: 15px;
+
+  margin: {
+    bottom: 20px;
+    top: 10px;
+    left: 20px;
+  }
+}
+
+ #exp_month_updated_at_2i {
+  @extend .form;
+  width: 90px;
+  height: 50px;
+  font-size: 16px;
+  color: $form_gray;
+  padding-left: 20px;
+  float: left;
+
+  margin: {
+    bottom: 5px;
+    top: 6px;
+    left: 20px;
+  }
+}
+
+sub.month {
+  float: left;
+
+  margin: {
+    top: 24px;
+    left: 5px;
+    ;
+  }
+}
+
+.credit__btn_add-2 {
+  background-color: $red;
+  width: 300px;
+  padding: 13px;
+  text-align: center;
+
+  margin: {
+    top: 19px;
+    left: 200px;
+  }
+}
+
+.credit_card {
+  margin-top: 50px;
+}
+
+img.credit__logo-img {
+  margin-bottom: 30px;
+}
+
