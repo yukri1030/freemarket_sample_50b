@@ -5,14 +5,14 @@
 .sigup-complete
   .sigup__title
     %h2 会員登録完了
-  .sigup__info-container
-    .description
-      %span.thanks ありがとうございます。
-      %br
-      %span.complete 会員登録が完了しました。
+    .sigup__info-container
+      .description
+        %span.thanks ありがとうございます。
+        %br
+        %span.complete 会員登録が完了しました。
+      .clearfix
+    .start-btn
+      = link_to "メルカリをはじめる","#", class:'sms-btn'
     .clearfix
-  .start-btn
-    = link_to "メルカリをはじめる","#", class:'sms-btn'
-  .clearfix
-  = image_tag 'register_complete_img.png',size: "800x300", class: "register_complete_img"
+    = image_tag 'register_complete_img.png',size: "800x300", class: "register_complete_img"
 = render partial:'products/product_footer'

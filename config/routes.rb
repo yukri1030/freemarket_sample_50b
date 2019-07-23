@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :users, controllers: {
     registrations: 'users/registrations'
    }
-   get 'signup/successful' , to: 'signups#successful'
+  get 'signup/successful' , to: 'signups#successful'
   root "products#index"
   resources :purchases, only: [:new]
   resources :products, only: [:index, :new, :edit, :show]
