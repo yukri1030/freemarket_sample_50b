@@ -119,7 +119,7 @@
 // Cross-axis Alignment
 // - applies to: flex containers
 // flex-start | flex-end | center | baseline | stretch 
-@mixin align-products($align) {
+@mixin align-items($align) {
   -webkit-align-items: $align;
      -moz-align-items: $align;
       -ms-align-items: $align;
