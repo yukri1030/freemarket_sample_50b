@@ -71,7 +71,7 @@
 |id| | |
 |product_name|text|null: false|
 |description|text|null: false|
-|status_id|integer|null: false|
+|status_id|references|null: false|
 |price|integer|null: false|
 |category_id|references|null: false, foreign_key: true|
 |brand_id|references|null: false, foreign_key: true|
