@@ -8,7 +8,7 @@
 |------|----|-------|
 |id| | |
 |nickname|string|null: false|
-|mail|string|null: false|
+|email|string|null: false|
 |created_at|datetime|null: false|
 |updated_at|datetime|null: false|
 
@@ -71,7 +71,7 @@
 |id| | |
 |product_name|text|null: false|
 |description|text|null: false|
-|status|integer|null: false|
+|status_id|integer|null: false|
 |price|integer|null: false|
 |category_id|references|null: false, foreign_key: true|
 |brand_id|references|null: false, foreign_key: true|
@@ -153,7 +153,17 @@
 
 ### Association
 - has_many :products
-- belongs_to :category, through: :sizes_categories
+- belongs_to_active_hash :category, through: :sizes_categories
+
+## 'Status'
+
+|Column|Type|Options|
+|------|----|-------|
+|id| | |
+|status|string|null:false, active-hash|
+
+### Assonciation
+- has_many :products
 
 ## Sizes_categories
 
