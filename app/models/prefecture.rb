@@ -1,20 +1,53 @@
 class Prefecture < ActiveHash::Base
-  self.data = [
-      {id: 1, name: '---'}, {id: 2, name: '北海道'}, {id: 3, name: '青森県'},
-      {id: 4, name: '岩手県'},{id: 5, name: '宮城県'}, {id: 6, name: '秋田県'},
-      {id: 7, name: '山形県'},{id: 8, name: '福島県'}, {id: 9, name: '茨城県'},
-      {id: 10, name: '栃木県'},{id: 11, name: '群馬県'}, {id: 12, name: '埼玉県'},
-      {id: 13, name: '千葉県'},{id: 14, name: '東京都'}, {id: 15, name: '神奈川県'},
-      {id: 16, name: '新潟県'},{id: 17, name: '富山県'}, {id: 18, name: '石川県'},
-      {id: 19, name: '福井県'},{id: 20, name: '山梨県'}, {id: 21, name: '長野県'},
-      {id: 22, name: '岐阜県'},{id: 23, name: '静岡県'}, {id: 24, name: '愛知県'},
-      {id: 25, name: '三重県'},{id: 26, name: '滋賀県'}, {id: 27, name: '京都府'},
-      {id: 28, name: '大阪府'},{id: 29, name: '兵庫県'}, {id: 30, name: '奈良県'},
-      {id: 31, name: '和歌山県'},{id: 32, name: '鳥取県'}, {id: 33, name: '島根県'},
-      {id: 34, name: '岡山県'},{id: 35, name: '広島県'}, {id: 36, name: '山口県'},
-      {id: 37, name: '徳島県'},{id: 38, name: '香川県'}, {id: 39, name: '愛媛県'},
-      {id: 40, name: '高知県'},{id: 41, name: '福岡県'}, {id: 42, name: '佐賀県'},
-      {id: 43, name: '長崎県'},{id: 44, name: '熊本県'}, {id: 45, name: '大分県'},
-      {id: 46, name: '宮崎県'},{id: 47, name: '鹿児島県'}, {id: 48, name: '沖縄県'}
-  ]
+  field :prefecture
+  create id: 0, prefecture: '----'
+  create id: 1, prefecture: '北海道'
+  create id: 2, prefecture: '青森県'
+  create id: 3, prefecture: '岩手県'
+  create id: 4, prefecture: '宮城県'
+  create id: 5, prefecture: '秋田県'
+  create id: 6, prefecture: '山形県'
+  create id: 7, prefecture: '福島県'
+  create id: 8, prefecture: '茨城県'
+  create id: 9, prefecture: '栃木県'
+  create id: 10, prefecture: '群馬県'
+  create id: 11, prefecture: '埼玉県'
+  create id: 12, prefecture: '千葉県'
+  create id: 13, prefecture: '東京都'
+  create id: 14, prefecture: '神奈川県'
+  create id: 15, prefecture: '新潟県'
+  create id: 16, prefecture: '富山県'
+  create id: 17, prefecture: '石川県'
+  create id: 18, prefecture: '福井県'
+  create id: 19, prefecture: '山梨県'
+  create id: 20, prefecture: '長野県'
+  create id: 21, prefecture: '岐阜県'
+  create id: 22, prefecture: '静岡県'
+  create id: 23, prefecture: '愛知県'
+  create id: 24, prefecture: '三重県'
+  create id: 25, prefecture: '滋賀県'
+  create id: 26, prefecture: '京都府'
+  create id: 27, prefecture: '大阪府'
+  create id: 28, prefecture: '兵庫県'
+  create id: 29, prefecture: '奈良県'
+  create id: 30, prefecture: '和歌山県'
+  create id: 31, prefecture: '鳥取県'
+  create id: 32, prefecture: '島根県'
+  create id: 33, prefecture: '岡山県'
+  create id: 34, prefecture: '広島県'
+  create id: 35, prefecture: '山口県'
+  create id: 36, prefecture: '徳島県'
+  create id: 37, prefecture: '香川県'
+  create id: 38, prefecture: '愛媛県'
+  create id: 39, prefecture: '高知県'
+  create id: 40, prefecture: '福岡県'
+  create id: 41, prefecture: '佐賀県'
+  create id: 42, prefecture: '長崎県'
+  create id: 43, prefecture: '熊本県'
+  create id: 44, prefecture: '大分県'
+  create id: 45, prefecture: '宮崎県'
+  create id: 46, prefecture: '鹿児島県'
+  create id: 47, prefecture: '沖縄県'
+
+  # has_many :users
 end
