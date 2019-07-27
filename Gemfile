@@ -9,7 +9,7 @@ gem 'rails', '~> 5.2.3'
 gem 'mysql2', '>= 0.4.4', '< 0.6.0'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
-# Use SCSS for stylesheets
+# Use SCSS for stylesheetsp
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
@@ -44,6 +44,8 @@ group :development, :test do
   gem 'capistrano-rails'
   gem 'capistrano3-unicorn'
   gem 'rspec-rails'
+  gem 'pry-rails'
+  gem 'pry-byebug'
 end
 
 group :development do
@@ -78,3 +80,4 @@ gem 'gon'
 gem "jquery-rails"
 gem 'active_hash'
 gem 'devise'
+

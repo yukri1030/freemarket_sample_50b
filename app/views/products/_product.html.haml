@@ -70,18 +70,15 @@
               .required__icon 必須
           .clearfix
           .select-wrap
-            = select_tag "category", options_for_select({'---':'---','レディース':'1','メンズ':'2','ベビー・キッズ':'3','インテリア・住まい・小物':'4','本・音楽・ゲーム':'5','おもちゃ・ホビー・グッズ':'6','コスメ・香水・美容':'7','家電・スマホ・カメラ':'8','スポーツ・レジャー':'9','ハンドメイド':'10','チケット':'11','自転車・オートバイ':'12','その他':'13'}), class: "select_tag parent_id", id: "product_category_id"
-
+            = collection_select :id, :main_category_id, Main_category.all,:id, :main_category, {}, {class: "select_tag",id: "product_category_id"}
             = fa_icon 'chevron-down', class:'fa_icon' 
           
           .select-wrap
-            = select_tag "category" , options_for_select({'---':'---'}), class: "select_tag child_id", id: "product_category_id"
-
+            = collection_select :id, :middle_category_id, MiddleCategory.all, :id, :middle_category, {}, {class: "select_tag child_id", id: "product_category_id"}
             = fa_icon 'chevron-down', class:'fa_icon'
           
           .select-wrap
-            = f.select :category_id, options_for_select({'---':'---'}),{} ,{class: "select_tag grandchild_id", id: "product_category_id"}
-
+            = collection_select :id, :small_category_id, SmallCategory.all, :id, :small_category,{} ,{class: "select_tag grandchild_id", id: "product_category_id"}
             = fa_icon 'chevron-down', class:'fa_icon'
 
         .product__detail__form_box__size
@@ -92,8 +89,7 @@
               .required__icon 必須
           .clearfix
           .select-wrap
-            = f.select :size_id, options_for_select({'---':'---','XXS以下':'1','XS(SS)':'2','S':'3','M':'4','L':'5','XL(LL)':'6','2XL(3L)':'7','3XL(4L)':'8','4XL(5L)以上':'9','FREE SIZE':'10'}), {},{class: "select_tag size_id", id: "product_size_id"}
-
+            = collection_select :id, :size_id, Size.all, :id, :size,{},{class: "select_tag size_id", id: "product_size_id"}
             = fa_icon 'chevron-down', class:'fa_icon'
         
         .product__detail__form_box__brand
@@ -114,8 +110,7 @@
               .required__icon 必須
           .clearfix
           .select-wrap
-            = f.select :condition, options_for_select({'---':'---','新品、未使用':'新品、未使用','未使用に近い':'未使用に近い','目立った傷や汚れなし':'目立った傷や汚れなし','やや傷や汚れあり':'やや傷や汚れあり','傷や汚れあり':'傷や汚れあり','全体的に状態が悪い':'全体的に状態が悪い'}), {},{class: "select_tag", id: "product_condition"}
-
+            = collection_select :id, :status_id, Status.all, :id, :status, {},{class: "select_tag", id: "product_condition"}
             = fa_icon 'chevron-down', class:'fa_icon'
 
     .delivery-fee
@@ -132,7 +127,7 @@
               .required__icon 必須
           .clearfix
           .select-wrap
-            = f.select :delivery_fee_payer, options_for_select({'---':'---','送料込み（出品者負担）':'送料込み（出品者負担）','着払い（購入者負担）':'着払い（購入者負担）'}), {},{class: "select_tag delivery_fee_payer", id: "product_delivery_fee_payer"}
+            = collection_select :id, :shipping_fee_payer_id, ShippingFeePayer.all, :id, :shipping_fee_payer,{},{class: "select_tag delivery_fee_payer", id: "product_delivery_fee_payer"}
             = fa_icon 'chevron-down', class:'fa_icon'
 
         .root-of-delivery_type-for-css
@@ -144,7 +139,7 @@
                 .required__icon 必須
             .clearfix
             .select-wrap
-              = f.select :delivery_type, options_for_select({'---':'---','未定':'未定','らくらくメルカリ便':'らくらくメルカリ便','ゆうメール':'ゆうメール','レターパック':'レターパック','普通郵便(定形、定形外)':'普通郵便(定形、定形外)','クロネコヤマト':'クロネコヤマト','ゆうパック':'ゆうパック','クリックポスト':'クリックポスト','ゆうパケット':'ゆうパケット'}), {}, id: "product_delivery_type"
+              = collection_select :id, :delivery_method_id,DeliveryMethod.all, :id, :delivery_method,{}, id: "product_delivery_type"
               = fa_icon 'chevron-down', class:'fa_icon'
 
         .delivery-from-area
@@ -157,7 +152,7 @@
           .select-wrap
             = form_tag "#", method: :get, class: 'select_tag_2' do
               .input-append
-                = collection_select :id, :prefecture_id, Prefecture.all, :id, :name, {} ,{class: "product_delivery_from_area"}
+                = collection_select :id, :prefecture_id, Prefecture.all, :id, :prefecture, {} ,{class: "product_delivery_from_area"}
             = fa_icon 'chevron-down', class:'fa_icon'
 
         .delivery-days
@@ -168,7 +163,7 @@
               .required__icon 必須
           .clearfix
           .select-wrap
-            = f.select :delivery_days, options_for_select({'---':'---','1~2日で発送':'1~2日で発送','2~3日で発送':'2~3日で発送','4~7日で発送':'4~7日で発送'}), {},{class: 'select_tag', id: "product_delivery_days"}
+            = collection_select :id, :delivery_time_id, DeliveryTime.all, :id, :delivery_time, {},{class: 'select_tag', id: "product_delivery_days"}
             = fa_icon 'chevron-down', class:'fa_icon'
 
 
