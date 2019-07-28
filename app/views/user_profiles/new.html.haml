@@ -34,7 +34,7 @@
         .clearfix
           = form_tag "#", method: :get, class: 'select-tag' do
             .input-append
-              = collection_select :id, :prefecture_id, Prefecture.all, :id, :name
+              = collection_select :id, :prefecture_id, Prefecture.all, :id, :prefecture
           = fa_icon 'chevron-down', class: 'fa-icon_4'
         %li
           %h3 市町村
