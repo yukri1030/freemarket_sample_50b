@@ -1,0 +1,38 @@
+%header
+  = link_to(root_path) do
+    = image_tag "logo.svg", width:  "234", height: "76", class: "header__logo-img_signup"
+  = image_tag 'signup_header2.png',size: "700x120" , class: "header__bar-img"
+.sigup_sms-2
+  .sigup__title
+    %h2 電話番号認証
+    .signup-errors
+      = @errors
+    .sigup__info-container
+      %ul
+        %li
+          %h3 認証番号
+        .clearfix
+        = text_field_tag :content, '',{ class: 'text_field', placeholder: "携帯電話の番号を入力"}
+        .clearfix
+        %li
+          %p SMSで届いた認証番号を入力してください。
+        .clearfix
+        = link_to "認証して完了",signup_address_path, class:'sms-btn_2'
+        .clearfix
+    .sigup__info-box
+    .sigup__info-box
+      %h3 30秒たっても認証番号が届かない方へ
+      %p 電話で認証番号を聞くこともできます。
+      .clearfix
+      .sms-btn_3
+        = link_to "電話で認証番号を聞く（通話無料）", class:'sms-btn'
+      .clearfix
+    .sigup__info-box_2
+      %h3 認証番号を再送することもできます。もう一度電話番号を入力してください。
+      %p.blue  電話番号を再度入力する
+      %br
+      .dscription
+        ※SMSが届かない場合は
+        %span.blue SMS受信設定
+        を確認して、もう一度電話番号を入力してください。
+= render partial:'products/product_footer'

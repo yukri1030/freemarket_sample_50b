@@ -5,15 +5,24 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_account_update_params, only: [:update]
     layout 'application-off-header-footer'
 
-  # GET /resource/sign_up
-  # def new
-    # super
-  # end
+  def new
+    @user = User.new
+    @profile = @user.build_profile
+    session["devise.facebook_data"] = nil
+    session["devise.google_data"] = nil
+  end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+  def create
+    if User.profile_nested_with_user_is_valid?(params)&&verify_recaptcha(model: resource)
+      super and return
+    else
+      @user =　build_resource(sign_up_params)
+      @profile = @user.profile
+      @errors='未記入箇所があります'
+      render 'new' and return
+    end
+ end
 
   # GET /resource/edit
   # def edit
@@ -52,9 +61,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # The path used after sign up.
-  # def after_sign_up_path_for(resource)
-  #   super(resource)
-  # end
+  def after_sign_up_path_for(resource)
+    signup_sms_confirmation_path
+  end
 
   # The path used after sign up for inactive accounts.
   # def after_inactive_sign_up_path_for(resource)
