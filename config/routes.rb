@@ -10,12 +10,13 @@ Rails.application.routes.draw do
   get 'signup/address', to: 'signups#address'
   get 'signup/google', to: 'signups#oauth_google'
   get 'signup/facebook', to: 'signup#oauth_facebook'
+  get 'user_confirmations/edit'
   devise_scope :user do
     get "sign_in", to: "users/sessions#new"
     get "sign_out", to: "users/sessions#destroy"
     post 'signup/sms_confirmation' => 'signup#sms_confirmation_send'
   end
-  root 'products#index'
+  root "top#index"
   resources :users, only: :new do
     resources :cards, only: [:index, :new, :destroy] do
       collection do

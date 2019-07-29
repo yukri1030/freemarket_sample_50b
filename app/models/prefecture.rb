@@ -1,6 +1,6 @@
 class Prefecture < ActiveHash::Base
   field :prefecture
-  create id: 0, prefecture: '---'
+  create id: 0, prefecture: '----'
   create id: 1, prefecture: '北海道'
   create id: 2, prefecture: '青森県'
   create id: 3, prefecture: '岩手県'
@@ -48,4 +48,6 @@ class Prefecture < ActiveHash::Base
   create id: 45, prefecture: '宮崎県'
   create id: 46, prefecture: '鹿児島県'
   create id: 47, prefecture: '沖縄県'
+
+  # has_many :users
 end
