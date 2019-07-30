@@ -15,7 +15,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
       build_resource(sign_up_params)
       @profile = @user.profile
       @errors='未記入箇所があります'
-      render 'new' and return
     end
   end
 
