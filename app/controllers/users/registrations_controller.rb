@@ -1,4 +1,5 @@
 class Users::RegistrationsController < Devise::RegistrationsController
+  before_action :check_captcha, only: [:create]
   layout 'application-off-header-footer'
 
   def new
