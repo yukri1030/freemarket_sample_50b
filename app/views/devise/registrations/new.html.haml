@@ -80,9 +80,6 @@
           .dscription
             %p.gray ※本人情報は正しく入力してください。会員登録後、修正するにはお時間をいただく場合があります。
           = recaptcha_tags
-          - if resource.errors.messages[:base].present?
-            - resource.errors.messages[:base].each do |message|
-              %p.error = message
           .dscription
             %p「次へ進む」のボタンを押すことにより、
             %p.blue 利用規約

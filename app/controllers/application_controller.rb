@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   before_action :check_address_nil,if: :use_check_address_nil?
   
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:nickname,profile_attributes: [:family_name,:last_name,:family_name_kana,:last_name_kana,:birth_ymd,:user_id]])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:nickname,profile_attributes: [:family_name, :last_name,:family_name_kana,:last_name_kana,:birth_ymd,:user_id]])
   end
 
   private

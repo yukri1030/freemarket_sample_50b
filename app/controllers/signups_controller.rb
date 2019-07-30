@@ -32,7 +32,7 @@ class SignupsController < ApplicationController
     end
     case params[:move_from]
       when 'signup'
-        redirect_to new_user_card_path(current_user.id)
+        redirect_to new_user_card_path(current_user.id) and return
       when 'purchase'
         redirect_to new_product_purchase_path(params[:product_id])
     end
@@ -51,7 +51,7 @@ class SignupsController < ApplicationController
   private
 
   def profile_params
-    params.require(:profile).permit(:phone_number,:family_name, :last_name, :family_name_kana, :last_name_kana, :zipcode, :address_prefecture, :address_city, :address_street_number,:address_building_name)
+    params.require(:profile).permit(:phone_number, :family_name, :last_name, :family_name_kana, :last_name_kana, :zipcode, :address_prefecture, :address_city, :address_street_number,:address_building_name)
   end
 
   def use_check_address_nil?
