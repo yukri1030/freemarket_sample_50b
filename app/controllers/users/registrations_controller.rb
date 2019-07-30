@@ -10,12 +10,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def create
     super
-    if User.new(configure_permitted_parameters)&&verify_recaptcha(model: resource)
-    else
-      build_resource(sign_up_params)
-      @profile = @user.profile
-      @errors='未記入箇所があります'
-    end
+    User.new(configure_permitted_parameters)&&verify_recaptcha(model: resource)
+    @user.save
+    return
   end
 
   def after_sign_up_path_for(resource)
