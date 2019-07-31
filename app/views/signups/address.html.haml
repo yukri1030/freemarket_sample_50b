@@ -1,0 +1,6 @@
+%header
+  = link_to(root_path) do
+    = image_tag "logo.svg", width:  "234", height: "76", class: "header__logo-img_signup"
+  = image_tag 'signup_header3.png',size: "720x110" , class: "header__bar-img"
+= render partial: 'address', locals: { move_from: 'signup' }
+= render partial:'products/product_footer'

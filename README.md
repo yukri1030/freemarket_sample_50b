@@ -22,17 +22,19 @@
 |Column|Type|Options|
 |------|----|-------|
 |id| | |
-|first_name|string|null: flase|
+|profile_comment|text|
+|avatar|string|
+|family_name|string|null: flase|
 |last_name|string|null: false|
-|first_name_kana|string|null: false |
+|family_name_kana|string|null: false |
 |last_name_kana|string|null: false|
-|birthday|integer|null: false|
-|zip|string|null: false|
-|prefecture_id|references|null: false, foreign_key: true|
-|city|string|null: false|
-|address|string|null: false|
-|building|string| |
-|phone_number|string|null: false|
+|birth_ymd|date|null: false|
+|zipcode|string|null: false|
+|adderss_prefecture|string||
+|address_city|string|null: false|
+|address_street_number|string|null: false|
+|address_building_name|string| |
+|phone_number|string|unique: true|
 |user_id|references|null: false, foreign_key: true|
 
 ### Association
