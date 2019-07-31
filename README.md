@@ -15,7 +15,7 @@
 ### Association
 - has_one :profile, optional: true, dependent: :delete
 - has_many :products, through: :likes, through: :users_products, dependent: :destroy
-- has_many_active_hash :evaluations, through: :users_evaluations, dependent: :destroy
+- has_many_active_hash :rails _hel.credit__box_list__inner-content__infopers, through: :users_evaluations, dependent: :destroy
 
 ## Profiles
 
