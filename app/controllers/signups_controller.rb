@@ -32,7 +32,7 @@ class SignupsController < ApplicationController
     end
     case params[:move_from]
       when 'signup'
-        redirect_to new_user_card_path(current_user.id) and return
+        redirect_to new_user_card_path(current_user.id)
       when 'purchase'
         redirect_to new_product_purchase_path(params[:product_id])
     end
@@ -57,4 +57,4 @@ class SignupsController < ApplicationController
   def use_check_address_nil?
     false
   end
- end
+end

@@ -94,3 +94,5 @@ gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 gem 'activerecord-import'
 gem 'listen', '>= 3.0.5', '< 3.2'
 gem 'rails-i18n', '~> 5.1'
+gem 'devise-i18n'
+gem 'devise-i18n-views'
