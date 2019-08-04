@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: {
     registrations: 'users/registrations',
-    sessions: 'users/sessions'
+    sessions: 'users/sessions',
+    omniauth_callbacks: 'users/omniauth_callbacks'
   }
   get 'signup/successful' , to: 'signups#successful'
   post 'signup/sms_confirmation_certify' , to: 'signups#sms_confirmation_certify'
@@ -9,14 +10,15 @@ Rails.application.routes.draw do
   get 'signup/sms_confirmation' , to: 'signups#sms_confirmation_send'
   get 'signup/address', to: 'signups#address'
   get 'signup/google', to: 'signups#oauth_google'
-  get 'signup/facebook', to: 'signup#oauth_facebook'
+  get 'signup/facebook', to: 'signups#oauth_facebook'
   get 'user_confirmations/edit'
   devise_scope :user do
     get "sign_in", to: "users/sessions#new"
     get "sign_out", to: "users/sessions#destroy"
     post 'signup/sms_confirmation' => 'signup#sms_confirmation_send'
-  end
+  end 
   root "top#index"
+  resources :top, only: :index
   resources :users, only: [:new, :show] do
     resources :cards, only: [:index, :new, :destroy] do
       collection do
