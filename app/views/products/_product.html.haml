@@ -152,7 +152,7 @@
           .select-wrap
             = form_tag "#", method: :get, class: 'select_tag_2' do
               .input-append
-                = collection_select :id, :prefecture_id, Prefecture.all, :id, :prefecture, {} ,{class: "product_delivery_from_area"}
+                = f.collection_select(:address_prefecture, Prefecture.all, :id, :name, {} ,{class: "product_delivery_from_area"}
             = fa_icon 'chevron-down', class:'fa_icon'
 
         .delivery-days
