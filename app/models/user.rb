@@ -6,7 +6,7 @@ class User < ApplicationRecord
   devise :omniauthable, omniauth_providers: %i[facebook google_oauth2]
   accepts_nested_attributes_for :profile
   has_one :card, dependent: :destroy
-  
+
   validates :nickname, presence: true, exclusion: { in: %w(メルカリ) }
   validates :email, presence: true, uniqueness: true
   validates :password, presence: true, length: { minimum: 6 }, format: { with: /\A(?=.*?[a-z])[a-z\d]+\z/i }
