@@ -1,0 +1,209 @@
+.search-products-container {
+  padding-top: 40px;
+  width: 90%;
+  margin: 0 auto;
+  display: flex;
+
+  * {
+    box-sizing: border-box;
+  }
+
+  .fa_icon_c1 {
+    position: absolute;
+    top: 30px;
+    left: 253px;
+    color: $btn-gray;
+  }
+
+  .fa_icon_c2 {
+    position: absolute;
+    top: 300px;
+    left: 239px;
+    color: $btn-gray;
+  }
+
+  .fa_icon_c3 {
+    position: absolute;
+    top: 510px;
+    left: 239px;
+    color: $btn-gray;
+  }
+
+  .fa_icon_c4 {
+    position: absolute;
+    top: 615px;
+    left: 239px;
+    color: $btn-gray;
+  }
+
+  .fas {
+    color: $form-gray;
+  }
+
+  &__left-container {
+    width: 300px;
+    padding: 10px;
+    margin-bottom: 100px;
+    float: left;
+    position: relative;
+
+
+    .select_tag {
+      @extend .form;
+      width: 250px;
+      height: 50px;
+      font-size: 16px;
+      color: $form_gray;
+      background-color: $white;
+      padding: 10px;
+    }
+
+    &__order {
+      margin-bottom: 30px;
+    }
+
+    &__main {
+      background-color: $white;
+      padding: 15px;
+
+      &__heading {
+        font-weight: bold;
+        margin-bottom: 20px;
+      }
+
+      &__requirement {
+        margin-bottom: 25px;
+
+        &__title {
+          font-weight: bold;
+          margin-bottom: 5px;
+        }
+
+        &__input {
+          .text_field {
+            @extend .form;
+            width: 100%;
+            height: 50px;
+            padding: 10px;
+          }
+
+          &__checkboxes {
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: space-between;
+
+            &__checkbox {
+              font-size: 0.95rem;
+              width: 48%;
+
+              .search-checkbox {
+                -webkit-appearance: checkbox;
+              }
+
+              .search-checkbox-letter {
+                display: inline;
+                line-height: 30px;
+              }
+            }
+          }
+        }
+      }
+
+      &__btn {
+        display: flex;
+        justify-content: space-around;
+
+        &__graybtn {
+          width: 40%;
+          @extend .graybtn;
+          color: $white;
+        }
+
+        &__redbtn {
+          width: 40%;
+          @extend .redbtn;
+        }
+      }
+    }
+  }
+
+  &__right-container {
+
+    &__heading {
+      font-size: 1.2rem;
+      margin-left: 10px;
+      padding-left: 30px;
+
+      &--keyword {
+        font-weight: bold;
+      }
+
+      &__result {
+        margin-top: 10px;
+
+        &--count {
+          color: $btn-gray;
+          font-size: 0.7rem;
+        }
+
+        &--nothing {
+          font-size: 0.9rem;
+        }
+      }
+    }
+
+    &__main {
+      width: 100%;
+      height: 100%;
+
+      .product-box {
+        padding: 20px;
+
+        .product {
+          margin-bottom: 20px;
+          position: relative;
+
+          .banner-mercari-info-hand-phone {
+            width: 100%;
+            height: 180px;
+          }
+        }
+      }
+    }
+  }
+}
+
+.select_tag1 {
+  @extend .form;
+  width: 280px;
+  height: 50px;
+  font-size: 16px;
+  color: $form_gray;
+  background-color: $white;
+  padding: 10px;
+}
+
+.image_soldout_red-triangle-search-product {
+  width: 0;
+  height: 0;
+  border-left: 100px solid $red;
+  border-right: 100px solid transparent;
+  border-bottom: 100px solid transparent;
+  position: absolute;
+  top: 0;
+  z-index: 20px;
+}
+
+.image_soldout_red-letter-search-product {
+  p {
+    color: $white;
+    font-weight: 600;
+    font-size: 20px;
+    transform: rotate(-45deg);
+    letter-spacing: 2px;
+    z-index: 30px;
+    position: absolute;
+    top: 25px;
+    right: 35px;
+  }
+}

@@ -17,6 +17,7 @@ Rails.application.routes.draw do
     post 'signup/sms_confirmation' => 'signup#sms_confirmation_send'
   end
   root "top#index"
+  get 'mypage', to: 'users#show'
   resources :users, only: [:new, :show] do
     resources :cards, only: [:index, :new, :destroy] do
       collection do
