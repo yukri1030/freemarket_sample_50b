@@ -3,11 +3,11 @@
     .header-upper.clearfix
       .logo
         = link_to(root_path) do
-          = image_tag "logo.svg", width:  "134", height: "36"  
-      =form_tag(root_path, method: :post,class: "form") do
-        =text_field_tag :name,"", class: 'textbox',placeholder: '何かお探しですか？'
+          = image_tag "logo.svg", width:  "134", height: "36"
+      = form_tag("#", method: :get, class: "form") do
+        = text_field_tag :keyword, "", class: 'textbox', placeholder: '何かお探しですか？'
         .form__icon-search
-          = button_tag type:  "submit", class: "btn"  do
+          = button_tag type: "submit", class: "btn"  do
             %i.fa.fa-search
     .header-lower.clearfix
       .header-lower-left
@@ -41,13 +41,13 @@
                       %li
                         = link_to 'Flightjacket', '#', class: 'child-categories'
                       %li
-                        = link_to 'jacket', '#', class: 'child-categories' 
+                        = link_to 'jacket', '#', class: 'child-categories'
                   -# クリックを無効にした透明なAタグを使い、child_categoryの名前がないところにマウスホバーしても収納されないようになっています。
                   -# child_category_cntに代入すると透明なAタグの大きさがurに合うように変わります。
-                  %li{style: "\n    background: white;\n"}
-                    -child_category_cnt="2"
-                    - class_name="init-right last product#{child_category_cnt}"
-                    = link_to '透明Aタグ',"#", class: class_name
+                  %li{:style => "\n    background: white;\n"}
+                    - child_category_cnt = "2"
+                    - class_name = "init-right last product#{child_category_cnt}"
+                    = link_to '透明Aタグ','#', class: class_name
                     %ul.menu__small-level
                       / 第三階層
               / 第一階層
@@ -85,10 +85,10 @@
                         = link_to 'Flightjacket', '#', class: 'child-categories'
                       %li
                         = link_to '法被', '#', class: 'child-categories'
-                  %li{style: "\n    background: white;\n"}
+                  %li{:style => "\n    background: white;\n"}
                     -products="3"
                     - class_name="init-right last product#{products}"
-                    = link_to '透明Aタグ',"#", class: class_name
+                    = link_to '透明Aタグ','#', class: class_name
                     %ul.menu__small-level
                       / 第三階層
           %li.menu__brand-menu
@@ -117,104 +117,120 @@
                 = link_to 'ブランド一覧', '#', class: 'main-level'
       .header-lower-right
         %ul.menu
-          %li.menu__notice-menu
-            = link_to '#', class: 'menu__notice-menu__button' do
-              %i.far.fa-bell
-              お知らせ
-            %ul.menu__main-level.notice
-              / 第一階層
-              %li
-                = link_to '#', class: 'main-level noticepack' do
-                  .notice-box
-                    = image_tag "mercari_profile.png", width: "48", height: "48"  ,class:"notice-img"
+          - if current_user
+            %li.menu__notice-menu
+              = link_to '#', class: 'menu__notice-menu__button' do
+                %i.far.fa-bell
+                お知らせ
+              %ul.menu__main-level.notice
+                / 第一階層
+                %li
+                  = link_to '#', class: 'main-level noticepack' do
+                    .notice-box
+                      = image_tag "mercari_profile.png", width: "48", height: "48"  ,class:"notice-img"
+                      .text-box
+                        《今なら20％還元》メルペイのお支払いで最大P2,000もらえるキャンペーン開催中！
+                        %br/
+                        %i.far.fa-clock
+                        20日前
+                        %i.fas.fa-chevron-right
+                %li
+                  = link_to '#', class: 'main-level noticepack' do
+                    .notice-box
+                      = image_tag "mercari_profile.png", width: "48", height: "48"  ,class:"notice-img"
+                      .text-box
+                        《今なら20％還元》メルペイのお支払いで最大P2,000もらえるキャンペーン開催中！
+                        %br/
+                        %i.far.fa-clock
+                        20日前
+                        %i.fas.fa-chevron-right.two
+            %li.menu__todo-menu.todo-list
+              = link_to '#', class: 'menu__todo-menu__button' do
+                %i.fas.fa-check
+                やることリスト
+              %ul.menu__main-level.todo
+                / 第一階層
+                %li
+                  = link_to '#', class: 'main-level noticepack' do
+                    .todo-box
+                      = image_tag "gray-mercari-icon.png", width: "75", height: "75"  ,class:"todo-img"
+                      .text-box
+                        現在、やる事リストはありません
+            %li.menu__user-menu.user-list
+              = link_to mypage_path ,class: "menu__user-menu__button"do
+                -if current_user.profile.avatar
+                  = image_tag current_user.profile.avatar, width: "30", height: "30", class:"nav-user-profile-img"
+                -else
+                  = image_tag "memberphotonoimage.png", width: "30", height: "30", class:"nav-user-profile-img"
+                .title-mypage マイページ
+              %ul.menu__main-level.user
+                / 第一階層
+                %li
+                  .user-box
+                    = image_tag "user_top_background_image.jpg", width: "320", height: "80", class:"user-img"
+                    -if current_user.profile.avatar
+                      = image_tag current_user.profile.avatar, width: "60", height: "60", class:"user-profile-img"
+                    -else
+                      = image_tag "memberphotonoimage.png", width: "60", height: "60", class:"user-profile-img"
+                  = link_to '#', class: 'main-level' do
                     .text-box
-                      《今なら20％還元》メルペイのお支払いで最大P2,000もらえるキャンペーン開催中！
-                      %br/ 
-                      %i.far.fa-clock
-                      20日前
+                      .user-name
+                        = current_user.nickname
+                      %br/
+                      評価: 8 出品数: 0
+                .sale-point
+                  .sale-point__textbox.clearfix
+                    .sale-point__textbox__title
+                      売上金
+                    .sale-point__textbox__arrow
                       %i.fas.fa-chevron-right
+                    .sale-point__textbox__value
+                      %n
+                      ¥0
+                  .sale-point__textbox.clearfix
+                    .sale-point__textbox__title
+                      ポイント
+                    .sale-point__textbox__arrow
+                      %i.fas.fa-chevron-right
+                    .sale-point__textbox__value
+                      %n
+                      P0
+                .user-nav-products
+                  .user-nav-products__product
+                    .user-nav-products__product__text
+                      = link_to 'いいね!一覧',"#"
+                    .user-nav-products__product__arrow
+                      %i.fas.fa-chevron-right
+                  .user-nav-products__product
+                    .user-nav-products__product__text
+                      = link_to '出品した商品 - 出品中',"#"
+                    .user-nav-products__product__arrow
+                      %i.fas.fa-chevron-right
+                  .user-nav-products__product
+                    .user-nav-products__product__text
+                      = link_to '出品した商品 - 取引中',"#"
+                    .user-nav-products__product__arrow
+                      %i.fas.fa-chevron-right
+                  .user-nav-products__product
+                    .user-nav-products__products__text
+                      = link_to '出品した商品 - 売却済み',"#"
+                    .user-nav-products__product__arrow
+                      %i.fas.fa-chevron-right
+                  .user-nav-products__product
+                    .user-nav-products__product__text
+                      = link_to '購入した商品 - 取引中',"#"
+                    .user-nav-products__product__arrow
+                      %i.fas.fa-chevron-right
+                  .user-nav-products__product
+                    .user-nav-products__product__text
+                      = link_to '購入した商品 - 過去の取引',"#"
+                    .user-nav-products__product__arrow
+                      %i.fas.fa-chevron-right
+          - else
+            = link_to new_user_path, class: 'menu__signup redbtn' do
               %li
-                = link_to '#', class: 'main-level noticepack' do
-                  .notice-box
-                    = image_tag "mercari_profile.png", width: "48", height: "48"  ,class:"notice-img"
-                    .text-box
-                      《今なら20％還元》メルペイのお支払いで最大P2,000もらえるキャンペーン開催中！
-                      %br/ 
-                      %i.far.fa-clock
-                      20日前
-                      %i.fas.fa-chevron-right.two
-          %li.menu__todo-menu.todo-list
-            = link_to '#', class: 'menu__todo-menu__button' do
-              %i.fas.fa-check
-              やることリスト
-            %ul.menu__main-level.todo
-              / 第一階層
+                新規会員登録
+            = link_to new_user_session_path, class: 'menu__signin bluebtn' do
               %li
-                = link_to '#', class: 'second-level noticepack' do
-                  .todo-box
-                    = image_tag "gray-mercari-icon.png", width: "75", height: "75"  ,class:"todo-img"
-                    .text-box
-                      現在、やる事リストはありません
-          %li.menu__user-menu.user-list
-            = link_to "#" ,class: "menu__user-menu__button" do
-              = image_tag "user-profile.JPG", width: "30", height: "30"  ,class:"nav-user-profile-img"
-              .title-mypage マイページ
-            %ul.menu__main-level.user
-              / 第一階層
-              %li
-                .user-box
-                  = image_tag "user_top_background_image.jpg", width: "320", height: "80"  ,class:"user-img"
-                  = image_tag "user-profile.JPG", width: "60", height: "60"  ,class:"user-profile-img"
-                = link_to '#', class: 'main-level' do
-                  .text-box
-                    .user-name ユーザー名
-                    %br/ 
-                    評価: 8 出品数: 0
-              .sale-point
-                .sale-point__textbox.clearfix
-                  .sale-point__textbox__title
-                    売上金
-                  .sale-point__textbox__arrow 
-                    %i.fas.fa-chevron-right
-                  .sale-point__textbox__value
-                    %n
-                    ¥0
-                .sale-point__textbox.clearfix
-                  .sale-point__textbox__title
-                    ポイント
-                  .sale-point__textbox__arrow 
-                    %i.fas.fa-chevron-right
-                  .sale-point__textbox__value
-                    %n
-                    P0
-              .user-nav-products
-                .user-nav-products__product
-                  .user-nav-products__product__text
-                    = link_to 'いいね!一覧',"#"
-                  .user-nav-products__product__arrow
-                    %i.fas.fa-chevron-right     
-                .user-nav-products__product
-                  .user-nav-products__product__text
-                    = link_to '出品した商品 - 出品中',"#"
-                  .user-nav-products__product__arrow
-                    %i.fas.fa-chevron-right     
-                .user-nav-products__product
-                  .user-nav-products__product__text
-                    = link_to '出品した商品 - 取引中',"#"
-                  .user-nav-products__product__arrow
-                    %i.fas.fa-chevron-right    
-                .user-nav-products__product
-                  .user-nav-products__product__text
-                    = link_to '出品した商品 - 売却済み',"#"
-                  .user-nav-products__product__arrow
-                    %i.fas.fa-chevron-right    
-                .user-nav-products__product
-                  .user-nav-products__product__text
-                    = link_to '購入した商品 - 取引中',"#"
-                  .user-nav-products__product__arrow
-                    %i.fas.fa-chevron-right    
-                .user-nav-products__product
-                  .user-nav-products__product__text
-                    = link_to '購入した商品 - 過去の取引',"#"
-                  .user-nav-products__product__arrow
-                    %i.fas.fa-chevron-right
+                ログイン
+    = breadcrumbs separator: " &rsaquo; "
