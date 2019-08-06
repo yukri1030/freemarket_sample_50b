@@ -10,14 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_27_112222) do
-
-  create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "prefecture_id"
-    t.string "city"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
+ActiveRecord::Schema.define(version: 2019_08_05_075619) do
 
   create_table "cards", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "card_id", null: false
@@ -26,6 +19,37 @@ ActiveRecord::Schema.define(version: 2019_07_27_112222) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_cards_on_user_id"
+  end
+
+  create_table "product_images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "image_url", null: false
+    t.bigint "product_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_product_images_on_product_id"
+  end
+
+  create_table "products", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name", null: false
+    t.text "text", null: false
+    t.bigint "category_id", null: false
+    t.bigint "size_id", null: false
+    t.bigint "brand_id"
+    t.string "status", null: false
+    t.bigint "shipping_fee_id", null: false
+    t.bigint "delivery_method_id", null: false
+    t.bigint "delivery_time_id", null: false
+    t.bigint "prefecture_id", null: false
+    t.integer "price", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["brand_id"], name: "index_products_on_brand_id"
+    t.index ["category_id"], name: "index_products_on_category_id"
+    t.index ["delivery_method_id"], name: "index_products_on_delivery_method_id"
+    t.index ["delivery_time_id"], name: "index_products_on_delivery_time_id"
+    t.index ["prefecture_id"], name: "index_products_on_prefecture_id"
+    t.index ["shipping_fee_id"], name: "index_products_on_shipping_fee_id"
+    t.index ["size_id"], name: "index_products_on_size_id"
   end
 
   create_table "profiles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -62,5 +86,6 @@ ActiveRecord::Schema.define(version: 2019_07_27_112222) do
   end
 
   add_foreign_key "cards", "users"
+  add_foreign_key "product_images", "products"
   add_foreign_key "profiles", "users"
 end

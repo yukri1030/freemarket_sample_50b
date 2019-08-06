@@ -1,4 +1,8 @@
 class TopController < ApplicationController
-  def index
+
+    def index
+      @product = Product.find
+    end
+  
   end
-end
+

@@ -71,7 +71,7 @@
 |Column|Type|Options|
 |------|----|-------|
 |id| | |
-|product_name|text|null: false|
+|product_name|string|null: false|
 |description|text|null: false|
 |status_id|references|null: false|
 |price|integer|null: false|
