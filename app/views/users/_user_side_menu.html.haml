@@ -88,7 +88,7 @@
           メール/パスワード
           %i.fas.fa-chevron-right
       %li.user_mypage__container__side__menu__list__product
-        = link_to user_confirmations_edit_path, class: 'user_mypage__container__side__menu__list__product__text' do
+        = link_to edit_user_user_confirmation_path(current_user, 1), class: 'user_mypage__container__side__menu__list__product__text' do
           本人情報
           %i.fas.fa-chevron-right
       %li.user_mypage__container__side__menu__list__product
