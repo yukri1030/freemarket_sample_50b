@@ -157,7 +157,7 @@
                       .text-box
                         現在、やる事リストはありません
             %li.menu__user-menu.user-list
-              = link_to mypage_path ,class: "menu__user-menu__button"do
+              = link_to mypage_path, class: "menu__user-menu__button" do
                 -if current_user.profile.avatar
                   = image_tag current_user.profile.avatar, width: "30", height: "30", class:"nav-user-profile-img"
                 -else

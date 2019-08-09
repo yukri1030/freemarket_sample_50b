@@ -18,7 +18,7 @@ crumb :logout do
 end
 
 crumb :user_confirmation do
-  link "本人情報の登録", user_confirmations_edit_path(current_user, 1)
+  link "本人情報の登録", edit_user_user_confirmation_path(current_user, 1)
   parent :mypage
 end
 
