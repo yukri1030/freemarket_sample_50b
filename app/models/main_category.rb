@@ -1,3 +1,4 @@
+
 class Main_category < ActiveHash::Base
   field :main_category
   create id: 0, main_category: '----'
