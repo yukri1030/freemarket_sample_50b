@@ -1,3 +1,4 @@
+- breadcrumb :mypage
 .user_mypage
   .user_mypage__container
     .user_mypage__container__main
@@ -37,12 +38,12 @@
               %li.user_mypage__container__main__notification_todo__tabs__content__list__product
                 = link_to "#", class: 'user_mypage__container__main__notification_todo__tabs__content__list__product__link' do
                   %figure
-                    =image_tag "mercari_icon.png", class: "user_mypage__container__main__notification_todo__tabs__content__list__item__link__icon"
+                    =image_tag "mercari_icon.png", class: "user_mypage__container__main__notification_todo__tabs__content__list____link__icon"
                   .user_mypage__container__main__notification_todo__tabs__content__list__item__link__body
                     .user_mypage__container__main__notification_todo__tabs__content__list__item__link__body__text テキスト
                     %time
                       %i.far.fa-clock
-                      %span ２０時間前
+                      %span 20時間前
                   %i.fas.fa-chevron-right
 
               %li.user_mypage__container__main__notification_todo__tabs__content__list__go-list
@@ -89,5 +90,3 @@
             
     
     =render partial: "users/user_side_menu"
-
-
