@@ -11,7 +11,6 @@ Rails.application.routes.draw do
   get 'signup/address', to: 'signups#address'
   get 'signup/google', to: 'signups#oauth_google'
   get 'signup/facebook', to: 'signups#oauth_facebook'
-  get 'user_confirmations/edit'
   get 'signup/facebook', to: 'signup#oauth_facebook'
   
   devise_scope :user do
@@ -25,7 +24,7 @@ Rails.application.routes.draw do
   resources :purchases, only: :new
 
   get 'mypage', to: 'users#show'
-  resources :users, only: [:new, :show, :edit] do
+  resources :users, only: :new do
     resources :cards, only: [:index, :new, :destroy] do
       collection do
         get 'add', to: 'cards#add'
