@@ -25,7 +25,7 @@ Rails.application.routes.draw do
   resources :purchases, only: :new
 
   get 'mypage', to: 'users#show'
-  resources :users, only: :new do
+  resources :users, only: [:new, :show, :edit] do
     resources :cards, only: [:index, :new, :destroy] do
       collection do
         get 'add', to: 'cards#add'

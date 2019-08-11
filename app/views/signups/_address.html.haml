@@ -33,7 +33,7 @@
           .clearfix
             .input-append
               .select-tag
-                = f.collection_select( :address_prefecture, Prefecture.all, :id, :prefecture)
+                = f.collection_select( :address_prefecture, Prefecture.all, :id, :name)
             = fa_icon 'chevron-down', class: 'fa-icon_4'
           %li
             %h3 市町村
