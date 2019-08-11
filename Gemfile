@@ -43,11 +43,13 @@ group :development, :test do
   gem 'capistrano-bundler'
   gem 'capistrano-rails'
   gem 'capistrano3-unicorn'
-
+  gem 'capistrano-rails-console'
+  
   gem 'rspec-rails'
   gem 'factory_bot_rails'
   gem 'rails-controller-testing'
   gem 'faker'
+  gem 'dotenv-rails'
 end
 
 group :development do
@@ -97,3 +99,5 @@ gem 'rails-i18n', '~> 5.1'
 gem 'devise-i18n'
 gem 'devise-i18n-views'
 gem 'gretel'
+gem 'dotenv-rails'
+gem 'unf_ext'
