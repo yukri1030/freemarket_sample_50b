@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   get 'signup/sms_confirmation' , to: 'signups#sms_confirmation_send'
   get 'signup/address', to: 'signups#address'
   get 'signup/google', to: 'signups#oauth_google'
-  get 'signup/facebook', to: 'signup#oauth_facebook'
+  get 'signup/facebook', to: 'signups#oauth_facebook'
   get 'user_confirmations/edit'
   devise_scope :user do
     get "sign_in", to: "users/sessions#new"
