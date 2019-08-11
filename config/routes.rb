@@ -11,7 +11,6 @@ Rails.application.routes.draw do
   get 'signup/address', to: 'signups#address'
   get 'signup/google', to: 'signups#oauth_google'
   get 'signup/facebook', to: 'signups#oauth_facebook'
-  get 'user_confirmations/edit'
   get 'signup/facebook', to: 'signup#oauth_facebook'
   
   devise_scope :user do
