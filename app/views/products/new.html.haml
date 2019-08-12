@@ -121,13 +121,13 @@
                 = f.select :status, options_for_select(get_status), class: "select_tag", id: "product_status"
                 = fa_icon 'chevron-down', class:'fa_icon'
 
-        .delivery-fee
+        .shipping-fee
           %h3.light_color 配送について
           %span.icon_question ?
 
           .clearfix
-          .delivery-fee__form_box
-            .delivery-fee-payer
+          .shipping-fee__form_box
+            .shipping-fee-payer
               %ul
                 %li
                   %h3 配送料の負担

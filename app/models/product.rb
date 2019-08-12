@@ -3,7 +3,7 @@ class Product < ApplicationRecord
   accepts_nested_attributes_for :product_images
   has_one :deal, dependent: :destroy
   belongs_to :category, optional: true
-  belongs_to :size, al: true
+  belongs_to :size, optional: true
   belongs_to :brand, optional: true
   with_options presence: true do
     validates :name, :text, :price, :category_id, :size, :status, :shipping_fee_payer, :delivery_method, :delivery_from_area, :delivery_time
