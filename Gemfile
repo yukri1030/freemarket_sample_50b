@@ -98,3 +98,5 @@ gem 'devise-i18n'
 gem 'devise-i18n-views'
 gem 'gretel'
 gem 'unf_ext'
+gem "carrierwave"
+gem 'mini_magick'

@@ -9,7 +9,7 @@ class CreateProducts < ActiveRecord::Migration[5.2]
       t.string     :status,          null: false
       t.string     :shipping_fee_payer, null: false
       t.string     :delivery_method,      null: false
-      t.string     :delibery_from_area, null: false
+      t.string     :delivery_from_area, null: false
       t.string     :delivery_time,      null: false
       t.integer    :price,              null: false
       t.timestamps
