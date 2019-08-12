@@ -34,7 +34,7 @@
             %label 都道府県
             %span 任意
             .user_mypage__container__edit__form__list__selectwrap
-              = collection_select :id, :prefecture_id, Prefecture.all, :id, :prefecture,{},class: "select-tag"
+              = collection_select :id, :prefecture_id, Prefecture.all, :id, :name,{},class: "select-tag"
               = fa_icon 'chevron-down', class: 'fa-icon'
             .user_mypage__container__edit__form__list
             %label 番地
