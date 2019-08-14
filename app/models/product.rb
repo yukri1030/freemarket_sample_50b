@@ -12,19 +12,19 @@ class Product < ApplicationRecord
 
 
   
-    # ピックアップカテゴリーのitemsの配列を生成するメソッド
+    # ピックアップカテゴリーのproductsの配列を生成するメソッド
     def self.pickup_category_products(id)
       # 引数で渡されたidの子カテゴリのidの配列を生成
       child_category_ids = Category.find(id).children.ids
       # 子カテゴリのidと合致する孫カテゴリのidの配列を生成
       grand_child_category_ids = Category.where("parent_id IN (?)", child_category_ids).ids
-      # 孫カテゴリのidと合致するitemsの配列を生成
+      # 孫カテゴリのidと合致するproductsの配列を生成
       products = Product.where("category_id IN (?)", grand_child_category_ids)
       # 最新の４件を取得
       products.order("created_at DESC").limit(4)
     end
   
-    # ピックアップブランドのitemsの配列を生成するメソッド
+    # ピックアップブランドのproductsの配列を生成するメソッド
     def self.pickup_brand_products(brand_name)
       pickup_brand_id = Brand.find_by(name: brand_name).id
       Product.where(brand_id: pickup_brand_id).order("created_at DESC").limit(4)

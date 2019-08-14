@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :destroy]
-  before_action :authenticate_user!, except: [:show, :search_items]
+  before_action :authenticate_user!, except: [:show, :search_products]
 
   def show
     render layout: 'application-off-header-footer.html.haml'
