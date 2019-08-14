@@ -127,10 +127,10 @@
               .required__icon 必須
           .clearfix
           .select-wrap
-            = collection_select :id, :shipping_fee_payer_id, ShippingFeePayer.all, :id, :shipping_fee_payer,{},{class: "select_tag delivery_fee_payer", id: "product_delivery_fee_payer"}
+            = collection_select :id, :shipping_fee_payer_id, ShippingFeePayer.all, :id, :shipping_fee_payer,{},{class: "select_tag _payer", id: "product_shipping_fee_payer"}
             = fa_icon 'chevron-down', class:'fa_icon'
 
-        .root-of-delivery_type-for-css
+        .root-of-delivery_method-for-css
           .delivery-type
             %ul
               %li
@@ -139,7 +139,7 @@
                 .required__icon 必須
             .clearfix
             .select-wrap
-              = collection_select :id, :delivery_method_id,DeliveryMethod.all, :id, :delivery_method,{}, id: "product_delivery_type"
+              = collection_select :id, :delivery_method_id,DeliveryMethod.all, :id, :delivery_method,{}, id: "product_delivery_method"
               = fa_icon 'chevron-down', class:'fa_icon'
 
         .delivery-from-area
@@ -163,7 +163,7 @@
               .required__icon 必須
           .clearfix
           .select-wrap
-            = collection_select :id, :delivery_time_id, DeliveryTime.all, :id, :delivery_time, {},{class: 'select_tag', id: "product_delivery_days"}
+            = collection_select :id, :delivery_time_id, DeliveryTime.all, :id, :delivery_time, {},{class: 'select_tag', id: "product_delivery_time"}
             = fa_icon 'chevron-down', class:'fa_icon'
 
 

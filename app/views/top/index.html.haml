@@ -5,9 +5,9 @@
     / Additional required wrapper
     .swiper-wrapper
       / Slides
-      .swiper-slide.camp-slide 
-      .swiper-slide.natsukashi-slide 
-      .swiper-slide.mercari-info-slide 
+      .swiper-slide.camp-slide
+      .swiper-slide.natsukashi-slide
+      .swiper-slide.mercari-info-slide
         .mercari-info-slide__content
           = image_tag "banner-mercari-info-hand-phone.png", width: "390", height: "390"  ,class:"hand-phone"
           .mercari-info-slide__content__left
@@ -21,75 +21,173 @@
               購入時も安心な独自システムのアプリです
               %br/
               %br/
-        = image_tag "banner-mercari-info-apple.svg", width: "128", height: "39", class: "banner-mercari-info-hand-phone"
-        = image_tag "banner-mercari-info-google-play.svg", width: "128", height: "39", class: "banner-mercari-info-hand-phone"
+        = image_tag "banner-mercari-info-apple.svg", width: "128", height: "39"  ,class:"banner-mercari-info-hand-phone"
+        = image_tag "banner-mercari-info-google-play.svg", width: "128", height: "39"  ,class:"banner-mercari-info-hand-phone"
     .swiper-pagination
     .swiper-button-prev
     .swiper-button-next
+
   .pickup-categories
     .pickup-categories__title ピックアップカテゴリー
+
     .pickup-category
-      = link_to 'レディース 新着アイテム', "#", class: 'pickup-category__title'
+      = link_to 'レディース 新着アイテム','####kari',class:'pickup-brand__title'
       .product-box.clearfix
-        .product
-          = image_tag "adidas_shoes.jpg", width: "213", height: "213", class: "banner-mercari-info-hand-phone"
-          .product__lower
-            .product__lower__name 新品 アディダス GLX 4 W ランニング シューズ ブラック × ピンク
-            .product__lower__price ¥ 3,980
-            .product__lower__tax (税込)
-        .product
-          = image_tag "adidas_shoes.jpg", width: "213", height: "213", class: "banner-mercari-info-hand-phone"
-          .product__lower
-            .product__lower__name 新品 アディダス GLX 4 W ランニング シューズ ブラック × ピンク
-            .product__lower__price ¥ 3,980
-            .product__lower__tax (税込)
-        .product
-          = image_tag "adidas_shoes.jpg", width: "213", height: "213", class: "banner-mercari-info-hand-phone"
-          .product__lower
-            .product__lower__name 新品 アディダス GLX 4 W ランニング シューズ ブラック × ピンク
-            .product__lower__price ¥ 3,980
-            .product__lower__tax (税込)
-        .product
-          = image_tag "adidas_shoes.jpg", width: "213", height: "213", class: "banner-mercari-info-hand-phone"
-          .product__lower
-            .product__lower__name 新品 アディダス GLX 4 W ランニング シューズ ブラック × ピンク
-            .product__lower__like
-              %i.far.fa-heart
-              2
-            .product__lower__price ¥3,980
-            .product__lower__tax (税込)
-      = link_to 'すべての商品を見る', "#", class: 'pickup-category__show-all'
+        - @ladies_products.each do |product|
+          .product
+            = link_to product_path(product.id), data: {turbolinks: false} do
+              -# top_helper.rb内のメソッドを呼び出し、imagesの最初の１枚を表示
+              = image_tag "#{first_product_image(product)}",class:"banner-mercari-info-hand-phone"
+            .product__lower
+              .product__lower__name
+                = product.name
+              .product__lower__price
+                = "¥ #{product.price.to_s(:delimited)}"
+              .product__lower__tax (税込)
+            - unless product.deal.position_id == 1
+              .image_soldout_red-triangle-top
+              .image_soldout_red-letter-top
+                %p SOLD
+      = link_to ' すべての商品を見る',"#",class:'pickup-category__show-all'
+
     .pickup-category
-      = link_to 'メンズ 新着アイテム', "#", class: 'pickup-category__title'
+      = link_to 'メンズ 新着アイテム',"####kari",class:'pickup-brand__title'
       .product-box.clearfix
-        .product
-          = image_tag "adidas_shoes.jpg", width: "213", height: "213", class: "banner-mercari-info-hand-phone"
-          .product__lower
-            .product__lower__name 新品 アディダス GLX 4 W ランニング シューズ ブラック × ピンク
-            .product__lower__price ¥ 3,980
-            .product__lower__tax (税込)
-        .product
-          = image_tag "adidas_shoes.jpg", width: "213", height: "213", class: "banner-mercari-info-hand-phone"
-          .product__lower
-            .product__lower__name 新品 アディダス GLX 4 W ランニング シューズ ブラック × ピンク
-            .product__lower__price ¥ 3,980
-            .product__lower__tax (税込)
-        .product
-          = image_tag "adidas_shoes.jpg", width: "213", height: "213", class: "banner-mercari-info-hand-phone"
-          .product__lower
-            .product__lower__name 新品 アディダス GLX 4 W ランニング シューズ ブラック × ピンク
-            .product__lower__price ¥ 3,980
-            .product__lower__tax (税込)
-        .product
-          = image_tag "adidas_shoes.jpg", width: "213", height: "213", class: "banner-mercari-info-hand-phone"
-          .product__lower
-            .product__lower__name 新品 アディダス GLX 4 W ランニング シューズ ブラック × ピンク
-            .product__lower__like
-              %i.far.fa-heart
-              2
-            .product__lower__price ¥3,980
-            .product__lower__tax (税込)
-      = link_to 'すべての商品を見る', "#", class: 'pickup-category__show-all'
+        - @mens_products.each do |product|
+          .product
+            = link_to product_path(product.id), data: {turbolinks: false} do
+              = image_tag "#{first_product_image(product)}",class:"banner-mercari-info-hand-phone"
+            .product__lower
+              .product__lower__name
+                = product.name
+              .product__lower__price
+                = "¥ #{product.price.to_s(:delimited)}"
+              .product__lower__tax (税込)
+            - unless product.deal.position_id == 1
+              .image_soldout_red-triangle-top
+              .image_soldout_red-letter-top
+                %p SOLD
+      = link_to ' すべての商品を見る',"#",class:'pickup-category__show-all'
+
+    .pickup-category
+      = link_to 'ベビー・キッズ 新着アイテム',"#", data: {turbolinks: false}, class:'pickup-brand__title'
+      .product-box.clearfix
+        - @baby_kids_products.each do |product|
+          .product
+            = link_to product_path(product.id), data: {turbolinks: false} do
+              = image_tag "#{first_product_image(product)}",class:"banner-mercari-info-hand-phone"
+            .product__lower
+              .product__lower__name
+                = product.name
+              .product__lower__price
+                = "¥ #{product.price.to_s(:delimited)}"
+              .product__lower__tax (税込)
+            - unless product.deal.position_id == 1
+              .image_soldout_red-triangle-top
+              .image_soldout_red-letter-top
+                %p SOLD
+      = link_to ' すべての商品を見る',"#",class:'pickup-category__show-all'
+
+    .pickup-category
+      = link_to 'コスメ・香水・美容 新着アイテム',"#",class:'pickup-brand__title'
+      .product-box.clearfix
+        - @beauty_products.each do |product|
+          .product
+            = link_to product_path(product.id), data: {turbolinks: false} do
+              = image_tag "#{first_product_image(product)}",class:"banner-mercari-info-hand-phone"
+            .product__lower
+              .product__lower__name
+                = product.name
+              .product__lower__price
+                = "¥ #{product.price.to_s(:delimited)}"
+              .product__lower__tax (税込)
+            - unless product.deal.position_id == 1
+              .image_soldout_red-triangle-top
+              .image_soldout_red-letter-top
+                %p SOLD
+      = link_to ' すべての商品を見る',"#",class:'pickup-category__show-all'
+
+
+  .pickup-brands
+    .pickup-brands__title ピックアップブランド
+
+    .pickup-brand
+      = link_to 'シャネル 新着アイテム',"#",class:'pickup-brand__title'
+      .product-box.clearfix
+        - @chanel_products.each do |product|
+          .product
+            = link_to product_path(product.id), data: {turbolinks: false} do
+              = image_tag "#{first_product_image(product)}",class:"banner-mercari-info-hand-phone"
+            .product__lower
+              .product__lower__name
+                = product.name
+              .product__lower__price
+                = "¥ #{product.price.to_s(:delimited)}"
+              .product__lower__tax (税込)
+            - unless product.deal.position_id == 1
+              .image_soldout_red-triangle-top
+              .image_soldout_red-letter-top
+                %p SOLD
+      = link_to ' すべての商品を見る',"#",class:'pickup-category__show-all'
+
+    .pickup-category
+      = link_to 'ルイ ヴィトン 新着アイテム',"#",class:'pickup-brand__title'
+      .product-box.clearfix
+        - @vuitton_products.each do |product|
+          .product
+            = link_to product_path(product.id), data: {turbolinks: false} do
+              = image_tag "#{first_product_image(product)}",class:"banner-mercari-info-hand-phone"
+            .product__lower
+              .product__lower__name
+                = product.name
+              .product__lower__price
+                = "¥ #{product.price.to_s(:delimited)}"
+              .product__lower__tax (税込)
+            - unless product.deal.position_id == 1
+              .image_soldout_red-triangle-top
+              .image_soldout_red-letter-top
+                %p SOLD
+      = link_to ' すべての商品を見る',"#",class:'pickup-category__show-all'
+
+    .pickup-category
+      = link_to 'シュプリーム 新着アイテム',"#",class:'pickup-brand__title'
+      .product-box.clearfix
+        - @supreme_products.each do |product|
+          .product
+            = link_to product_path(product.id), data: {turbolinks: false} do
+              = image_tag "#{first_product_image(product)}",class:"banner-mercari-info-hand-phone"
+            .product__lower
+              .product__lower__name
+                = product.name
+              .product__lower__price
+                = "¥ #{product.price.to_s(:delimited)}"
+              .product__lower__tax (税込)
+            - unless product.deal.position_id == 1
+              .image_soldout_red-triangle-top
+              .image_soldout_red-letter-top
+                %p SOLD
+      = link_to ' すべての商品を見る',"#",class:'pickup-category__show-all'
+
+    .pickup-category
+      = link_to 'ナイキ 新着アイテム',"#",class:'pickup-brand__title'
+      .product-box.clearfix
+        - @nike_products.each do |product|
+          .product
+            = link_to product_path(product.id), data: {turbolinks: false} do
+              = image_tag "#{first_product_image(product)}",class:"banner-mercari-info-hand-phone"
+            .product__lower
+              .product__lower__name
+                = product.name
+              .product__lower__price
+                = "¥ #{product.price.to_s(:delimited)}"
+              .product__lower__tax (税込)
+            - unless product.deal.position_id == 1
+              .image_soldout_red-triangle-top
+              .image_soldout_red-letter-top
+                %p SOLD
+      = link_to ' すべての商品を見る',"#",class:'pickup-brand__show-all'
+
+
 = javascript_include_tag "https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/js/swiper.min.js"
 :javascript
   var mySwiper = new Swiper ('.swiper-container', {
@@ -98,9 +196,8 @@
     },
     navigation: {
       nextEl: '.swiper-button-next',
-      preEl: '.swiper-button-prev',
+      prevEl: '.swiper-button-prev',
     },
     autoplay:true,
     loop: true
   })
-
