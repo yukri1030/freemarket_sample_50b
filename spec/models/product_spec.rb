@@ -39,10 +39,10 @@ describe Product do
       expect(product.errors[:category_id]).to include("can't be blank")
     end
 
-    it "is invalid without condition" do
-      product = build(:product,condition:"")
+    it "is invalid without status" do
+      product = build(:product,status:"")
       product.valid?
-      expect(product.errors[:condition]).to include("can't be blank")
+      expect(product.errors[:status]).to include("can't be blank")
     end
 
     it "is invalid without delivery_fee_payer" do
@@ -134,10 +134,10 @@ describe Product do
       expect(product.errors[:category_id]).to include("can't be blank")
     end
 
-    it "is invalid without condition" do
-      product = build(:product,condition:"")
+    it "is invalid without status" do
+      product = build(:product,status:"")
       product.valid?
-      expect(product.errors[:condition]).to include("can't be blank")
+      expect(product.errors[:status]).to include("can't be blank")
     end
 
     it "is invalid without delivery_fee_payer" do
