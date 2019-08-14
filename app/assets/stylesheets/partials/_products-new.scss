@@ -301,9 +301,9 @@
           line-height: 1.5;
           cursor: pointer;
 
-          #product_delivery_fee_payer,
-          #product_delivery_type,
-          #product_delivery_days,
+          #product_shipping_fee_payer,
+          #product_delivery_method,
+          #product_delivery_time,
           #product_delivery_from_area {
             @extend .form;
             width: 100%;

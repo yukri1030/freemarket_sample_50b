@@ -32,13 +32,13 @@ crumb :user_confirmation do
   parent :mypage
 end
 
-crumb :item do |item|
-  link item.name, item_path(item)
+crumb :product do |product|
+  link product.name, product_path(product)
   parent :root
 end
 
-crumb :searched_items do |keyword|
-  link keyword, search_items_path
+crumb :searched_products do |keyword|
+  link keyword, search_products_path
 end
 
 crumb :categories do
