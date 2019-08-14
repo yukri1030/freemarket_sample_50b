@@ -216,7 +216,7 @@
 
         &__size,
         &__brand,
-        &__condition {
+        &__status {
           margin-top: 40px;
 
           .optional__icon {
@@ -252,7 +252,7 @@
 
           #product_category_id,
           #product_size_id,
-          #product_condition {
+          #product_status {
             @extend .form;
             width: 100%;
             height: 100%;
@@ -277,15 +277,15 @@
       padding-top: 16px;
     }
 
-    .delivery-fee {
+    .shipping-fee {
       @extend .box;
 
       &__form_box {
         margin-left: 250px;
 
-        .delivery-type,
+        .delivery-method,
         .delivery-from-area,
-        .delivery-days {
+        .delivery-time {
           margin-top: 40px;
         }
 
@@ -301,9 +301,9 @@
           line-height: 1.5;
           cursor: pointer;
 
-          #product_delivery_fee_payer,
-          #product_delivery_type,
-          #product_delivery_days,
+          #product_shipping_fee_payer,
+          #product_delivery_method,
+          #product_delivery_time,
           #product_delivery_from_area {
             @extend .form;
             width: 100%;
