@@ -39,34 +39,34 @@ describe Product do
       expect(product.errors[:category_id]).to include("can't be blank")
     end
 
-    it "is invalid without condition" do
-      product = build(:product,condition:"")
+    it "is invalid without status" do
+      product = build(:product,status:"")
       product.valid?
-      expect(product.errors[:condition]).to include("can't be blank")
+      expect(product.errors[:status]).to include("can't be blank")
     end
 
-    it "is invalid without delivery_fee_payer" do
-      product = build(:product,delivery_fee_payer:"")
+    it "is invalid without shipping_fee_payer" do
+      product = build(:product,shipping_fee_payer:"")
       product.valid?
-      expect(product.errors[:delivery_fee_payer]).to include("can't be blank")
+      expect(product.errors[:shipping_fee_payer]).to include("can't be blank")
     end
 
-    it "is invalid without delivery_type" do
-      product = build(:product,delivery_type:"")
+    it "is invalid without delivery_method" do
+      product = build(:product,delivery_method:"")
       product.valid?
-      expect(product.errors[:delivery_type]).to include("can't be blank")
+      expect(product.errors[:delivery_method]).to include("can't be blank")
     end
 
-    it "is invalid without delibery_from_area" do
-      product = build(:product,delibery_from_area:"")
+    it "is invalid without delivery_from_area" do
+      product = build(:product,delivery_from_area:"")
       product.valid?
-      expect(product.errors[:delibery_from_area]).to include("can't be blank")
+      expect(product.errors[:delivery_from_area]).to include("can't be blank")
     end
 
-    it "is invalid without delivery_days" do
-      product = build(:product,delivery_days:"")
+    it "is invalid without delivery_time" do
+      product = build(:product,delivery_time:"")
       product.valid?
-      expect(product.errors[:delivery_days]).to include("can't be blank")
+      expect(product.errors[:delivery_time]).to include("can't be blank")
     end
 
     it "is valid with lowest price" do
@@ -134,34 +134,34 @@ describe Product do
       expect(product.errors[:category_id]).to include("can't be blank")
     end
 
-    it "is invalid without condition" do
-      product = build(:product,condition:"")
+    it "is invalid without status" do
+      product = build(:product,status:"")
       product.valid?
-      expect(product.errors[:condition]).to include("can't be blank")
+      expect(product.errors[:status]).to include("can't be blank")
     end
 
-    it "is invalid without delivery_fee_payer" do
-      product = build(:product,delivery_fee_payer:"")
+    it "is invalid without shipping_fee_payer" do
+      product = build(:product,shipping_fee_payer:"")
       product.valid?
-      expect(product.errors[:delivery_fee_payer]).to include("can't be blank")
+      expect(product.errors[:shipping_fee_payer]).to include("can't be blank")
     end
 
-    it "is invalid without delivery_type" do
-      product = build(:product,delivery_type:"")
+    it "is invalid without delivery_method" do
+      product = build(:product,delivery_method:"")
       product.valid?
-      expect(product.errors[:delivery_type]).to include("can't be blank")
+      expect(product.errors[:delivery_method]).to include("can't be blank")
     end
 
-    it "is invalid without delibery_from_area" do
-      product = build(:product,delibery_from_area:"")
+    it "is invalid without delivery_from_area" do
+      product = build(:product,delivery_from_area:"")
       product.valid?
-      expect(product.errors[:delibery_from_area]).to include("can't be blank")
+      expect(product.errors[:delivery_from_area]).to include("can't be blank")
     end
 
-    it "is invalid without delivery_days" do
-      product = build(:product,delivery_days:"")
+    it "is invalid without delivery_time" do
+      product = build(:product,delivery_time:"")
       product.valid?
-      expect(product.errors[:delivery_days]).to include("can't be blank")
+      expect(product.errors[:delivery_time]).to include("can't be blank")
     end
 
     it "is valid with lowest price" do
