@@ -155,7 +155,7 @@
                   .required__icon 必須
               .clearfix
               .select-wrap
-                = f.select :delivery_from_area, options_for_select(get_delivery_from_area), class: "product_delivery_from_area"
+                = collection_select :id, :prefecture_id, Prefecture.all, :id, :name, {} ,{class: "product_delivery_from_area"}
                 = fa_icon 'chevron-down', class:'fa_icon'
 
             .delivery-time
