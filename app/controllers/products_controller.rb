@@ -52,10 +52,10 @@ class ProductsController < ApplicationController
     else
       @children = category.children
     end
-   respond_to do |format|
-     format.html
-     format.json
-   end
+    respond_to do |format|
+      format.json
+      format.json
+    end
   end
 
   def search_products
