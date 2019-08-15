@@ -277,15 +277,15 @@
       padding-top: 16px;
     }
 
-    .delivery-fee {
+    .shipping-fee {
       @extend .box;
 
       &__form_box {
         margin-left: 250px;
 
-        .delivery-type,
+        .delivery-method,
         .delivery-from-area,
-        .delivery-days {
+        .delivery-time {
           margin-top: 40px;
         }
 
