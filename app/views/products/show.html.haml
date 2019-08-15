@@ -19,7 +19,7 @@
                 = image_tag image.image_url.to_s, class:'product_s-img'
 
           -# --------------商品取引中・売却済後、表示------------------
-        - unless @product.deal.status_id == 1
+        - unless @product.deal.position_id == 1
           .image_soldout_red-triangle
           .image_soldout_red-letter
             %p SOLD
@@ -62,30 +62,30 @@
             %tr
               %th 商品の状態
               %td
-                = @product.condition
+                = @product.status
             %tr
               %th 配送料の負担
               %td
-                = @product.delivery_fee_payer
+                = @product.shipping_fee_payer
             %tr
               %th 配送方法
               %td
-                = @product.delivery_type
+                = @product.delivery_method
             %tr
               %th 配送元地域
               %td#blue
-                = @product.delibery_from_area
+                = @product.delivery_from_area
             %tr
               %th 発送の目安
               %td
-                = @product.delivery_days
+                = @product.delivery_time
         .product__info__inner-content__account#box-price
           .product__info__inner-content__account__price-detail
             .product-price
               ="¥#{@product.price.to_s(:delimited)}"
             %sub.tax
               (税込)
-            - if @product.delivery_fee_payer == "送料込み（出品者負担）"
+            - if @product.shipping_fee_payer == "送料込み（出品者負担）"
               .deliverly-btn
                 送料込み
             - else
@@ -93,12 +93,12 @@
                 着払い
         -# --------------current_userの時、非表示------------------
         - if @product.deal.seller != current_user
-          - if @product.deal.status_id == 1
+          - if @product.deal.position_id == 1
             .product__info__inner-content__purchase-btn#btn-detail
               = link_to "購入画面に進む", new_product_purchase_path(@product), class:'btn-detail'
 
         -# --------------商品取引中・売却済後、表示------------------
-        - unless @product.deal.status_id == 1
+        - unless @product.deal.position_id == 1
           .product__info__inner-content__purchase-btn#btn-soldout
             %a 売り切れました
 
