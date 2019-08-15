@@ -147,10 +147,10 @@
         .alert-btn
           .alert-btn-right
             %button#btn-border
-            = link_to "キャンセル", :back , id:'btn-cancel-modal', data: {turbolinks: false}
+            = link_to "キャンセル","/items/#{@item.id}", id:'btn-cancel-modal', data: {turbolinks: false}
           .alert-btn-left
             %button
-            = link_to "削除する", product_path(@product), class: "btn-default btn-gray", method: :delete, id:'btn-delete-modal'
+            = link_to "削除する","/items/#{@item.id}",method: :delete, id:'btn-delete-modal'
 
 = render partial:'products/comment_form'
 
