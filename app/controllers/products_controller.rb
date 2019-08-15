@@ -41,8 +41,7 @@ class ProductsController < ApplicationController
   end
 
   def auto_complete
-    brands = Brand.select(:name).where("name like '" + params[:term].tr('ぁ-ん','ァ-ン') + "%'").order(:name)
-    brands = brands.pluck(:name)
+    brands = Brand.select(:name).where("name like '" + params[:term].tr('ぁ-ん','ァ-ン') + "%'").order(:name).brands.pluck(:name)
     render json: brands.to_json
   end
 
