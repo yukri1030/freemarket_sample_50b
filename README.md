@@ -8,14 +8,22 @@
 |------|----|-------|
 |id| | |
 |nickname|string|null: false|
-|email|string|null: false|
+|email|string|null: false, uniqure: true|
 |created_at|datetime|null: false|
 |updated_at|datetime|null: false|
 
 ### Association
-- has_one :profile, optional: true, dependent: :delete
-- has_many :products, through: :likes, through: :users_products, dependent: :destroy
-- has_many_active_hash :rails _hel.credit__box_list__inner-content__infopers, through: :users_evaluations, dependent: :destroy
+- has_many :comments
+- has_many :post_reviews, foreign_key: :reviewer_id, class_name: :Review
+- has_many :receive_reviews, foreign_key: :reviewed_id, class_name: :Review
+- has_one :profile
+- has_one :card
+- has_many :buyed_deals, foreign_key: :buyer_id, class_name: :Deal
+- has_many :selling_deals, -> { where("buyer_id is NULL") }, 
+- has_many :sold_deals, -> { where("buyer_id is not NULL") }, foreign_key: :seller_id, class_name: :Deal
+- has_many :buyed_products, through: :buyed_deals, source: :product
+- has_many :selling_products, through: :selling_deals, source: :product
+- has_many :sold_products, through: :sold_deals, source: :product
 
 ## Profiles
 
