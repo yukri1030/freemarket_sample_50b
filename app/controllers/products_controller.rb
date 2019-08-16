@@ -40,6 +40,15 @@ class ProductsController < ApplicationController
     render layout: 'application-off-header-footer.html.haml'
   end
 
+  def destroy
+    if @product.deal.seller == current_user
+      @product.destroy
+      redirect_to root_path, notice: "削除しました。"
+    else
+      redirect_to :back, alert: "削除できませんでした。"
+    end
+  end
+
   def auto_complete
     brands = Brand.select(:name).where("name like '" + params[:term].tr('ぁ-ん','ァ-ン') + "%'").order(:name).brands.pluck(:name)
     render json: brands.to_json

@@ -45,3 +45,22 @@ $(function () {
     }
   );
 });
+
+//product_show 削除btnのモーダル
+$(document).on("turbolinks:load", function() {
+  var modalOpen = $("#btn-delete");
+  var modalMask = $("#product__mask");
+  var modalWindow = $("#modal");
+  var modalClose = $("#btn-delete-modal");
+
+  modalOpen.click(function() {
+    modalMask.fadeIn();
+    modalWindow.fadeIn();
+    "body".css("overflow", "hidden");
+  });
+  modalClose.click(function() {
+    modalMask.fadeOut();
+    modalWindow.fadeOut();
+    $("body").css("overflow", "auto");
+  });
+});
