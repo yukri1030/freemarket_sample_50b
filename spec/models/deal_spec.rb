@@ -3,7 +3,7 @@ require 'rails_helper'
 describe Deal do
   describe '#pay' do
     context 'can save' do
-      it 'is valid with charge_id, buyer_id, deal_at, status_id' do
+      it 'is valid with charge_id, buyer_id, deal_at, position_id' do
         expect(build(:deal)).to be_valid
       end
 
@@ -15,8 +15,8 @@ describe Deal do
         expect(build(:deal, deal_at: nil)).to be_valid
       end
 
-      it 'is valid without updating status_id' do
-        expect(build(:deal, status_id: 1)).to be_valid
+      it 'is valid without updating position_id' do
+        expect(build(:deal, position_id: 1)).to be_valid
       end
     end
 
