@@ -8,14 +8,22 @@
 |------|----|-------|
 |id| | |
 |nickname|string|null: false|
-|email|string|null: false|
+|email|string|null: false, uniqure: true|
 |created_at|datetime|null: false|
 |updated_at|datetime|null: false|
 
 ### Association
-- has_one :profile, optional: true, dependent: :delete
-- has_many :products, through: :likes, through: :users_products, dependent: :destroy
-- has_many_active_hash :rails _hel.credit__box_list__inner-content__infopers, through: :users_evaluations, dependent: :destroy
+- has_many :comments
+- has_many :post_reviews, foreign_key: :reviewer_id, class_name: :Review
+- has_many :receive_reviews, foreign_key: :reviewed_id, class_name: :Review
+- has_one :profile
+- has_one :card
+- has_many :buyed_deals, foreign_key: :buyer_id, class_name: :Deal
+- has_many :selling_deals, -> { where("buyer_id is NULL") }, 
+- has_many :sold_deals, -> { where("buyer_id is not NULL") }, foreign_key: :seller_id, class_name: :Deal
+- has_many :buyed_products, through: :buyed_deals, source: :product
+- has_many :selling_products, through: :selling_deals, source: :product
+- has_many :sold_products, through: :sold_deals, source: :product
 
 ## Profiles
 
@@ -40,6 +48,18 @@
 ### Association
 - belongs_to :user
 - belongs_to_active_hash :prefecture
+
+## Cards
+
+|Column|Type|Options|
+|------|----|-------|
+|id| | |
+|customer_id|string|null: false, unique: true|
+|card_id|string|null: false, uniqure: true|
+|user_id|references|null: false, foreign_key: true|
+
+### Association
+- belongs_to :user
 
 ## Prefectures
 
@@ -71,77 +91,71 @@
 |Column|Type|Options|
 |------|----|-------|
 |id| | |
-|product_name|text|null: false|
-|description|text|null: false|
-|status_id|references|null: false|
+|name|string|null: false, index: true|
+|size_id|references|null: false, foreign_key: true|
+|status|string|null: false|
+|text|text|null: false|
 |price|integer|null: false|
 |category_id|references|null: false, foreign_key: true|
-|brand_id|references|null: false, foreign_key: true|
-|size_id|references|null: false, foreign_key: true|
-|shipping_fee_id|references|null: false, foreign_key: true|
-|delivery_method_id|references|null: false, foreign_key: true|
-|prefecture_id|references|null: false, foreign_key: true|
-|delivery_time_id|references|null: false, foreign_key: true|
-|user_id|references|null: false, foreign_key: true|
+|brand_id|references|optioanal: true, foreign_key: true|
+|shipping_fee_payer|string|null: false|
+|delivery_method|string|null: false|
+|delivery_from_area|string|null: false|
+|delivery_time|references|null: false|
 |created_at|daytime|null: false|
 |updated_at|daytime|null: false|
 
 ### Association
-- belongs_to :user
+- has_many :comments
 - has_many :product_images
-- has_many :users, through: :users_products
-- has_many :users, through: :likes
+- accepts_nested_attributes_for :product_images
+- has_one :deal
+- belongs_to :size
 - belongs_to :category
-- belongs_to_active_hash :size
-- belongs_to_active_hash :brand
-- belongs_to_active_hash :shipping_fee_payer
-- belongs_to_active_hash :delivery_method
-- belongs_to_active_hash :prefecture
-- belongs_to_active_hash :delivery_time
+- belongs_to :brand
 
 ## Product_images
 
 |Column|Type|Options|
 |------|----|-------|
 |id| | |
-|image|string|null: false|
+|image_url|string|null: false|
 |product_id|references|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :product
-
-## Likes
-
-|Column|Type|Options|
-|------|----|-------|
-|id| | |
-|user_id|references|null: false, foreign_key: true|
-|product_id|references|null: false, foreign_key: true|
-
-### Association
-- belongs_to :product
-- belongs_to :user
 
 ## Categories
 
 |Column|Type|Options|
 |------|----|-------|
 |id| | |
-|main_category_id|references|null: false, foreign_key: true, active-hash|
-|middle_category_id|references|null: false, foreign_key: true, active-hash|
-|small_category_id|references|null: false, foreign_key: true, active-hash|
-
+|name|string|null: false, uniqure: true|
+|parent_id|references|optional: true, foreign_key, true|
 
 ### Association
 - has_many :products
-- has_many :sizes, through :sizes_categories
+- has_many :children, class_name: :Category, foreign_key: :parent_id
+- belongs_to :parent, class_name: :Category
+- has_many :size_categories
+- has_many :sizes, through: :size_categories
+
+## Positions
+
+|Column|type|Options|
+|------|----|-------|
+|id| | |
+|name|string|null: false, unique: true|
+
+### Association
+- has_many: deals
 
 ## Brands
 
 |Column|type|Options|
 |------|----|-------|
 |id| | |
-|brand_name|string|null: false|
+|name|string|null: false, uniqure: true|
 
 ### Association
 - has_many :products
@@ -151,11 +165,33 @@
 |Column|Type|Options|
 |------|----|-------|
 |id| | |
-|size|string|null: false, active-hash|
+|name|string|null: false, uniqure: true|
 
 ### Association
 - has_many :products
 - belongs_to_active_hash :category, through: :sizes_categories
+
+## Sizes_categories
+
+|Column|Type|Options|
+|------|----|-------|
+|id| | |
+|category_id|references|null: false, foreign_key: true|
+|size_id|references|null: false, foreign_key: true|
+
+### Association
+- belongs_to :size, dependent: :destroy
+- belongs_to :category, dependent: :destroy
+
+## 'Positions'
+
+|Column|Type|Options|
+|------|----|-------|
+|id| | |
+|name|string|null:false, unique: true|
+
+### Association
+- has_many: deals
 
 ## 'Status'
 
@@ -163,28 +199,6 @@
 |------|----|-------|
 |id| | |
 |status|string|null:false, active-hash|
-
-### Assonciation
-- has_many :products
-
-## Sizes_categories
-
-|Column|Type|Options|
-|------|----|-------|
-|id| | |
-|category_id|references|null: false, foreign_key: true, active-hash|
-|size_id|references|null: false, foreign_key: true, active-hash|
-
-### Association
-- belongs_to_active_hash :size
-- belongs_to_active_hash :category
-
-## Shipping_fee_payers
-
-|Column|Type|Options|
-|------|----|-------|
-|id| | |
-|payer_name|string|null: false, active-hash|
 
 ### Association
 - has_many :products
@@ -194,7 +208,7 @@
 |Column|Type|Options|
 |------|----|-------|
 |id| | |
-|delivery_times|string|null: false, active-hash|
+|delivery_times|string|null: false|
 
 ### Association
 - has_many :products
@@ -219,4 +233,4 @@
 
 ### Association
 - belongs_to :user
-- belongs_to_active_hash :evaluation
+- belongs_to :evaluation

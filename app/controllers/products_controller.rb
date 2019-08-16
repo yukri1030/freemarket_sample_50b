@@ -21,7 +21,7 @@ class ProductsController < ApplicationController
       new_image_params[:images].each do |image|
         @product.product_images.create(image_url: image, product_id: @product.id)
       end
-      Deal.create(seller_id: current_user.id ,product_id: @product.id, status_id:1)
+      Deal.create(seller_id: current_user.id ,product_id: @product.id, position_id:1)
 
       flash[:notice] = '出品が完了しました'
       redirect_to root_path
@@ -38,6 +38,15 @@ class ProductsController < ApplicationController
 
   def edit
     render layout: 'application-off-header-footer.html.haml'
+  end
+
+  def destroy
+    if @product.deal.seller == current_user
+      @product.destroy
+      redirect_to root_path, notice: "削除しました。"
+    else
+      redirect_to :back, alert: "削除できませんでした。"
+    end
   end
 
   def auto_complete
