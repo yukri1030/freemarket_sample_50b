@@ -49,6 +49,18 @@
 - belongs_to :user
 - belongs_to_active_hash :prefecture
 
+## Cards
+
+|Column|Type|Options|
+|------|----|-------|
+|id| | |
+|customer_id|string|null: false, unique: true|
+|card_id|string|null: false, uniqure: true|
+|user_id|references|null: false, foreign_key: true|
+
+### Association
+- belongs_to :user
+
 ## Prefectures
 
 |Column|Type|Options|
