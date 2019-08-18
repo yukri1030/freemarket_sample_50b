@@ -78,7 +78,7 @@ class ProductsController < ApplicationController
   end
 
   def product_params
-    params.require(:product).permit(:name, :text, :category_id, :size_id, :brand_id, :status, :shipping_fee_payer, :delivery_method, :delivery_from_area, :delivery_time, :price)
+    params.require(:product).permit(:name, :text, :category_id, :size_id, :brand_id, :status, :shipping_fee_payer, :delivery_method, :prefecture_id, :delivery_time, :price)
   end
 
   def registered_image_params
