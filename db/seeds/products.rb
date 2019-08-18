@@ -9,7 +9,7 @@ Product.create(
   size_id:rand(1..10),
   shipping_fee_payer:"送料込み（出品者負担）",
   delivery_method:"らくらくメルカリ便",
-  delivery_from_area:"北海道",
+  prefecture_id: [*(1)].sample(),
   delivery_time:"1~2日で発送",
   status:"目立った傷や汚れなし")
 end
