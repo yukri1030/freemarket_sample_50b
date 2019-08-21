@@ -75,7 +75,7 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
 
     # 登録済画像のidの配列を生成
-    ids = @product.product_images.map{|image| image.id }
+    ids = @product.product_images.pluck(:image_url, :product_id)
     # 登録済画像のうち、編集後もまだ残っている画像のidの配列を生成(文字列から数値に変換)
     exist_ids = registered_image_params[:ids].map(&:to_i)
     # 登録済画像が残っていない場合(配列に０が格納されている)、配列を空にする
@@ -86,7 +86,7 @@ class ProductsController < ApplicationController
         # 削除する画像のidの配列を生成
         delete_ids = ids - exist_ids
         delete_ids.each do |id|
-          @product.product_images.find(id).destroy
+          @product.product_images.find(id).destroy_all
         end
       end
       # 新規登録画像があればcreate
