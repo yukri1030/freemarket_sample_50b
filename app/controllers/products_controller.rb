@@ -41,7 +41,7 @@ class ProductsController < ApplicationController
     gon.product = @product
     gon.product_images = @product.product_images
 
-    # @product.product_imagse.image_urlをバイナリーデータにしてビューで表示できるようにする
+    # @product.product_images.image_urlをバイナリーデータにしてビューで表示できるようにする
     require 'base64'
     # require 'aws-sdk'
 
