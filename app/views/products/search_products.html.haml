@@ -1,0 +1,141 @@
+- breadcrumb :searched_products, @keyword
+.search-products-container
+  .search-products-container__left-container
+    = form_tag '#' do
+      .search-products-container__left-container__order
+        = select_tag :order, options_for_select(get_search_order), class: 'select_tag1', type: 'text'
+        = fa_icon 'chevron-down', class:'fa_icon_c1'
+    = form_tag '#' do
+      .search-products-container__left-container__main
+        .search-products-container__left-container__main__heading
+          詳細検索
+        .search-products-container__left-container__main__requirement
+          .search-products-container__left-container__main__requirement__title
+            %i.fas.fa-plus
+            キーワードを追加する
+          .search-products-container__left-container__main__requirement__input
+            = text_field_tag :keyword, '', class: 'text_field'
+        .search-products-container__left-container__main__requirement
+          .search-products-container__left-container__main__requirement__title
+            %i.fas.fa-bars
+            カテゴリーを選択する
+          .search-products-container__left-container__main__requirement__input
+            = select_tag :order, options_for_select(get_search_categories), class: 'select_tag', type: 'text'
+            = fa_icon 'chevron-down', class:'fa_icon_c2'
+        .search-products-container__left-container__main__requirement
+          .search-products-container__left-container__main__requirement__title
+            %i.fas.fa-tags
+            ブランド名から探す
+          .search-products-container__left-container__main__requirement__input
+            = text_field_tag :brand, '', class: 'text_field'
+
+        .search-products-container__left-container__main__requirement
+          .search-products-container__left-container__main__requirement__title
+            %i.fas.fa-crop-alt
+            サイズを指定する
+          .search-products-container__left-container__main__requirement__input
+            = select_tag :size, options_for_select(get_search_size), class: 'select_tag', type: 'text'
+            = fa_icon 'chevron-down', class:'fa_icon_c3'
+        .search-products-container__left-container__main__requirement
+          .search-products-container__left-container__main__requirement__title
+            %i.fas.fa-coins
+            価格
+          .search-products-container__left-container__main__requirement__input
+            = select_tag :price, options_for_select(get_search_price), class: 'select_tag', type: 'text'
+            = fa_icon 'chevron-down', class:'fa_icon_c4'
+        .search-products-container__left-container__main__requirement
+          .search-products-container__left-container__main__requirement__title
+            %i.fas.fa-star
+            商品の状態
+          .search-products-container__left-container__main__requirement__input
+            .search-products-container__left-container__main__requirement__input__checkboxes
+              .search-products-container__left-container__main__requirement__input__checkboxes__checkbox
+                = check_box_tag :test1, 1, checked = false, class: 'search-checkbox'
+                = label_tag :test1, "すべて", class: 'search-checkbox-letter'
+              .search-products-container__left-container__main__requirement__input__checkboxes__checkbox
+                = check_box_tag :test2, 1, checked = false, class: 'search-checkbox'
+                = label_tag :test2, "新品、未使用", class: 'search-checkbox-letter'
+              .search-products-container__left-container__main__requirement__input__checkboxes__checkbox
+                = check_box_tag :test3, 1, checked = false, class: 'search-checkbox'
+                = label_tag :test3, "未使用に近い", class: 'search-checkbox-letter'
+              .search-products-container__left-container__main__requirement__input__checkboxes__checkbox
+                = check_box_tag :test4, 1, checked = false, class: 'search-checkbox'
+                = label_tag :test4, "目立った傷や汚れなし", class: 'search-checkbox-letter'
+              .search-products-container__left-container__main__requirement__input__checkboxes__checkbox
+                = check_box_tag :test5, 1, checked = false, class: 'search-checkbox'
+                = label_tag :test5, "やや傷や汚れあり", class: 'search-checkbox-letter'
+              .search-products-container__left-container__main__requirement__input__checkboxes__checkbox
+                = check_box_tag :test6, 1, checked = false, class: 'search-checkbox'
+                = label_tag :test6, "傷や汚れあり", class: 'search-checkbox-letter'
+              .search-products-container__left-container__main__requirement__input__checkboxes__checkbox
+                = check_box_tag :test7, 1, checked = false, class: 'search-checkbox'
+                = label_tag :test7, "全体的に状態が悪い", class: 'search-checkbox-letter'
+
+        .search-products-container__left-container__main__requirement
+          .search-products-container__left-container__main__requirement__title
+            %i.fas.fa-truck
+            配送料の負担
+          .search-products-container__left-container__main__requirement__input
+            .search-products-container__left-container__main__requirement__input__checkboxes
+              .search-products-container__left-container__main__requirement__input__checkboxes__checkbox
+                = check_box_tag :delivery1, 1, checked = false, class: 'search-checkbox'
+                = label_tag :delivery1, "すべて", class: 'search-checkbox-letter'
+              .search-products-container__left-container__main__requirement__input__checkboxes__checkbox
+                = check_box_tag :delivery2, 1, checked = false, class: 'search-checkbox'
+                = label_tag :delivery2, "着払い(購入者負担)", class: 'search-checkbox-letter'
+              .search-products-container__left-container__main__requirement__input__checkboxes__checkbox
+                = check_box_tag :delivery3, 1, checked = false, class: 'search-checkbox'
+                = label_tag :delivery3, "送料込み(出品者負担)", class: 'search-checkbox-letter'
+        .search-products-container__left-container__main__requirement
+          .search-products-container__left-container__main__requirement__title
+            %i.fas.fa-shopping-cart
+            販売状況
+          .search-products-container__left-container__main__requirement__input
+            .search-products-container__left-container__main__requirement__input__checkboxes
+              .search-products-container__left-container__main__requirement__input__checkboxes__checkbox
+                = check_box_tag :sale1, 1, checked = false, class: 'search-checkbox'
+                = label_tag :sale1, "すべて", class: 'search-checkbox-letter'
+              .search-products-container__left-container__main__requirement__input__checkboxes__checkbox
+                = check_box_tag :sale2, 1, checked = false, class: 'search-checkbox'
+                = label_tag :sale2, "販売中", class: 'search-checkbox-letter'
+              .search-products-container__left-container__main__requirement__input__checkboxes__checkbox
+                = check_box_tag :sale3, 1, checked = false, class: 'search-checkbox'
+                = label_tag :sale3, "売り切れ", class: 'search-checkbox-letter'
+
+        .search-products-container__left-container__main__btn
+          .search-products-container__left-container__main__btn__graybtn
+            クリア
+          .search-products-container__left-container__main__btn__redbtn
+            完了
+
+  .search-products-container__right-container
+    .search-products-container__right-container__heading
+      %span.search-products-container__right-container__heading--keyword
+        = @keyword
+      の検索結果
+      .search-products-container__right-container__heading__result
+        - if @searched_products.present?
+          .search-products-container__right-container__heading__result--count
+            = "1 - #{@searched_products.length}件表示"
+        - else
+          .search-products-container__right-container__heading__result--nothing
+            該当する商品が見つかりません。検索条件を変えて、再度お試しください。
+    .search-products-container__right-container__main
+      .product-box
+        - @searched_products.each do |product|
+          .product
+            = link_to product_path(product.id), data: {turbolinks: false} do
+              = image_tag "#{first_product_image(product)}", class:"banner-mercari-info-hand-phone"
+            .product__lower
+              .product__lower__name
+                = product.name
+              .product__lower__price
+                = "¥ #{product.price.to_s(:delimited)}"
+              .product__lower__tax (税込)
+            - unless product.deal.position_id == 1
+              .image_soldout_red-triangle-search-product
+                .image_soldout_red-letter-search-product
+                  %p SOLD
+
+    .clearfix
+    = paginate @searched_products
