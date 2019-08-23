@@ -24,7 +24,7 @@
         .clearfix
         = f.email_field :email,{ class: 'text_field', placeholder: "PC・携帯どちらでも可"}
         -if session["devise.facebook_data"]
-          = f.hidden_field :password, value: password = Devise.friendly_token[0,20]
+          = f.hidden_field :password, value: Devise.friendly_token[0,20]
           = f.hidden_field :password_confirmation, value: Devise.friendly_token[0,20]
         %li
           %h3 本人確認

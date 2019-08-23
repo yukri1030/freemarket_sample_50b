@@ -1,4 +1,6 @@
 class Product < ApplicationRecord
+  extend ActiveHash::Associations::ActiveRecordExtensions
+  belongs_to_active_hash :prefecture
   has_many :product_images, dependent: :destroy
   accepts_nested_attributes_for :product_images
   has_one :deal, dependent: :destroy
@@ -6,7 +8,7 @@ class Product < ApplicationRecord
   belongs_to :size, optional: true
   belongs_to :brand, optional: true
   with_options presence: true do
-    validates :name, :text, :price, :category_id, :size, :status, :shipping_fee_payer, :delivery_method, :delivery_from_area, :delivery_time
+    validates :name, :text, :price, :category_id, :size, :status, :shipping_fee_payer, :delivery_method, :prefecture_id, :delivery_time
   end
   validates :price, numericality: {greater_than_or_equal_to: 300,less_than_or_equal_to: 9_999_999}
 
