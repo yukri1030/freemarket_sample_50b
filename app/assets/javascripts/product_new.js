@@ -157,7 +157,7 @@ document.addEventListener("turbolinks:load", function() {
       $(".seller-share").val(input - fee);
     } else {
       $(".mercari-share").val("-");
-      $(".seller-share").val("-")
+      $(".seller-share").val("-");
     }
   });
 });

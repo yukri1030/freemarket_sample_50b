@@ -4,7 +4,7 @@
       .logo
         = link_to(root_path) do
           = image_tag "logo.svg", width:  "134", height: "36"
-      = form_tag("#", method: :get, class: "form") do
+      = form_tag(search_products_path, method: :get, class: "form") do
         = text_field_tag :keyword, "", class: 'textbox', placeholder: '何かお探しですか？'
         .form__icon-search
           = button_tag type: "submit", class: "btn"  do
@@ -13,7 +13,7 @@
       .header-lower-left
         %ul.menu
           %li.menu__category-menu
-            = link_to '#', class: 'menu__category-menu__button' do
+            = link_to categories_path, class: 'menu__category-menu__button' do
               %i.fas.fa-list-ul
               カテゴリーから探す
             %ul.menu__main-level

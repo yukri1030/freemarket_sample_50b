@@ -1,39 +1,28 @@
+- breadcrumb :product, @product
 = render partial:'shared/global-header'
 .product_wrapper
   %br
   %br
   .product
     .product__title-detail
-      Technics SL-1200MK5ターンテーブル テクニクス dj
-    .product__info#product-info
+      = @product.name
+    .product__info-2
       .product__info__inner-content#content-detail
         .product__info__inner-content__image#content-img
           %ul#slider
-            %li
-              = image_tag 'turntable_01.jpg', height: '230', width: '230', class:'product_img'
-            %li
-              = image_tag 'turntable_02.jpg', height: '230', width: '230', class:'product_img'
-            %li
-              = image_tag 'turntable_03.jpg', height: '230', width: '230', class:'product_img'
-            %li
-              = image_tag 'turntable_04.jpg', height: '230', width: '230', class:'product_img'
-            %li
-              = image_tag 'turntable_05.jpg', height: '230', width: '230', class:'product_img'
-            %li
-              = image_tag 'turntable_06.jpg', height: '230', width: '230', class:'product_img'
+            - @product.product_images.each do |image|
+              %li
+                = image_tag image.image_url.to_s, class:'product_img'
           %ul#thumb
-            %li
-              = image_tag 'turntable_01.jpg', height: '60', width: '60', class:'product_s-img'
-            %li
-              = image_tag 'turntable_02.jpg', height: '60', width: '60', class:'product_s-img'
-            %li
-              = image_tag 'turntable_03.jpg', height: '60', width: '60', class:'product_s-img'
-            %li
-              = image_tag 'turntable_04.jpg', height: '60', width: '60', class:'product_s-img'
-            %li
-              = image_tag 'turntable_05.jpg', height: '60', width: '60', class:'product_s-img'
-            %li
-              = image_tag 'turntable_06.jpg', height: '60', width: '60', class:'product_s-img'
+            - @product.product_images.each do |image|
+              %li
+                = image_tag image.image_url.to_s, class:'product_s-img'
+
+          -# --------------商品取引中・売却済後、表示------------------
+        - unless @product.deal.position_id == 1
+          .image_soldout_red-triangle
+          .image_soldout_red-letter
+            %p SOLD
 
         .product__info__inner-content__table
         %table
@@ -41,7 +30,9 @@
             %tr
               %th 出品者
               %td
-                %p#blue bomber
+                %p#blue
+                = @product.deal.seller.nickname
+                %p
                 %i.fas.fa-grin
                 500
                 %i.fas.fa-meh
@@ -51,61 +42,120 @@
             %tr
               %th カテゴリー
               %td#blue
-                おもちゃ・ホビー・グッズ
+                %p
+                = @product.category.parent.parent.name
                 %p
                 = fa_icon 'chevron-right'
-                楽器/機材
+                = @product.category.parent.name
                 %p
                 = fa_icon 'chevron-right'
-                DJ機器
+                = @product.category.name
             %tr
               %th ブランド
-              %td#blue テクニクス
+              %td#blue
+                = @product.brand.name
             %tr
-              %th 商品のサイズ
-              %td
+              - if @product.size.name != "none"
+                %th 商品のサイズ
+                %td
+                  = @product.size.name
             %tr
               %th 商品の状態
-              %td 新品、未使用
+              %td
+                = @product.status
             %tr
               %th 配送料の負担
-              %td 送料込み(出品者負担)
+              %td
+                = @product.shipping_fee_payer
             %tr
               %th 配送方法
-              %td 未定
+              %td
+                = @product.delivery_method
             %tr
               %th 配送元地域
-              %td#blue 東京都
+              %td#blue
+                = @product.prefecture.name
             %tr
               %th 発送の目安
-              %td 1~2日で発送
-        .product__info__inner-content__account
+              %td
+                = @product.delivery_time
+        .product__info__inner-content__account#box-price
           .product__info__inner-content__account__price-detail
-            .price ¥ 43,000
-            .tax (税込)
-            .deliverly-btn 送料込み
-        .product__info__inner-content__purchase-btn#btn-detail
-          = link_to "購入画面に進む", "#", class:'btn-detail'
+            .product-price
+              ="¥#{@product.price.to_s(:delimited)}"
+            %sub.tax
+              (税込)
+            - if @product.shipping_fee_payer == "送料込み（出品者負担）"
+              .deliverly-btn
+                送料込み
+            - else
+              %sub.payment
+                着払い
+        -# --------------current_userの時、非表示------------------
+        - if @product.deal.seller != current_user
+          - if @product.deal.position_id == 1
+            .product__info__inner-content__purchase-btn#btn-detail
+              = link_to "購入画面に進む", new_product_purchase_path(@product), class:'btn-detail'
+
+        -# --------------商品取引中・売却済後、表示------------------
+        - unless @product.deal.position_id == 1
+          .product__info__inner-content__purchase-btn#btn-soldout
+            %a 売り切れました
+
+        -# --------------どちらのページも表示------------------
         .product__info__inner-content__text
-          Technics SL-1200MK5ターンテーブル 新品！ 未使用！
-          生産終了品です！
+          = simple_format @product.text
+        -# --------------current_userの時、非表示------------------
+        - if @product.deal.seller != current_user
+          .btn-box
+            .product__info__inner-content__like-btn
+              %i.far.fa-heart
+              %span いいね! 1000
+            .product__info__inner-content__alert-btn
+              %i.far.fa-flag
+              %span 不適切な商品の報告
+          .product__info__inner-content__safety-btn
+            %i.fas.fa-shopping-bag
+            %span あんしん・あんぜんへの取り組み
+
+        -# --------------current_userの時のみ、編集・停止。削除btn表示------------------
+  - if @product.deal.seller == current_user
+    %br
+    .product
+      .product__edit-btn
+        %button
+          = link_to "商品の編集", edit_product_path(@product), data: {turbolinks: false}, id:'btn-comment'
+      %sub#or or
+      .product__comment-btn
+        %button
+          = link_to "出品を一旦停止する", new_product_path, id:'btn-stop'
+          -#### リンク仮置きです
+      .product__comment-btn
+        -# このbtnでモーダル発火
+        %a#btn-delete
+          この商品を削除する
+
+      -# -----------------削除btnのモーダル---------------
+    #product__mask
+      #modal
+        .alert-text
+          %p#bold 確認
+          %p 削除すると二度と復活できません。
+          %p 削除する代わりに停止することもできます。
           %br
-          綺麗なもの探してた方におすすめです。
-          お早めにどうぞ！
-          %br
-          ご不明点があればコメントよろしくお願いいたします。
-        .btn-box
-          .product__info__inner-content__like-btn
-            %i.far.fa-heart
-            %span いいね! 1000
-          .product__info__inner-content__alert-btn
-            %i.far.fa-flag
-            %span 不適切な商品の報告
-        .product__info__inner-content__safety-btn
-          %i.fas.fa-shopping-bag
-          %span あんしん・あんぜんへの取り組み
+          %p 本当に削除しますか？
+        .alert-btn
+          .alert-btn-right
+            %button#btn-border
+            = link_to "キャンセル","/products/#{@product.id}", id:'btn-cancel-modal', data: {turbolinks: false}
+          .alert-btn-left
+            %button
+            = link_to "削除する","/products/#{@product.id}",method: :delete, id:'btn-delete-modal'
+
 = render partial:'products/comment_form'
 
-= render partial:'products/sns_icon'
+- if @product.deal.seller != current_user
+  -# imgの飾りアイコンです
+  = render partial:'products/sns_icon'
 
 = render partial:'shared/global-only-footer'

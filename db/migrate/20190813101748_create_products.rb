@@ -6,10 +6,10 @@ class CreateProducts < ActiveRecord::Migration[5.2]
       t.references :category,           null: false, foreign_key: true
       t.references :size,               null: false, foreign_key: true
       t.references :brand,              optional: true, foreign_key: true
+      t.references :prefecture,         null: false
       t.string     :status,          null: false
       t.string     :shipping_fee_payer, null: false
       t.string     :delivery_method,      null: false
-      t.string     :delivery_from_area, null: false
       t.string     :delivery_time,      null: false
       t.integer    :price,              null: false
       t.timestamps

@@ -1,119 +1,221 @@
-= render partial:'shared/global-header'
 .product_wrapper
-  %br
-  %br
-  .product
-    .product__title-detail
-      Technics SL-1200MK5ターンテーブル テクニクス dj
-    .product__info#product-info
-      .product__info__inner-content#content-detail
-        .product__info__inner-content__image#content-img
-          %ul#slider
+  %header
+    = link_to (root_path) do
+      = image_tag 'mercari_logo_horizontal.png',size: "234x76" , class: "header__logo-img"
+  #edit_product
+    .product
+      .product__title
+        %h2 商品の情報を入力
+      = form_for @product do |f|
+        .product__img
+          %ul
             %li
-              = image_tag 'turntable_01.jpg', height: '230', width: '230', class:'product_img'
+              %h3 出品画像
             %li
-              = image_tag 'turntable_02.jpg', height: '230', width: '230', class:'product_img'
-            %li
-              = image_tag 'turntable_03.jpg', height: '230', width: '230', class:'product_img'
-            %li
-              = image_tag 'turntable_04.jpg', height: '230', width: '230', class:'product_img'
-            %li
-              = image_tag 'turntable_05.jpg', height: '230', width: '230', class:'product_img'
-            %li
-              = image_tag 'turntable_06.jpg', height: '230', width: '230', class:'product_img'
-          %ul#thumb
-            %li
-              = image_tag 'turntable_01.jpg', height: '60', width: '60', class:'product_s-img'
-            %li
-              = image_tag 'turntable_02.jpg', height: '60', width: '60', class:'product_s-img'
-            %li
-              = image_tag 'turntable_03.jpg', height: '60', width: '60', class:'product_s-img'
-            %li
-              = image_tag 'turntable_04.jpg', height: '60', width: '60', class:'product_s-img'
-            %li
-              = image_tag 'turntable_05.jpg', height: '60', width: '60', class:'product_s-img'
-            %li
-              = image_tag 'turntable_06.jpg', height: '60', width: '60', class:'product_s-img'
+              .required__icon 必須
+          .clearfix
+          %p 最大10枚までアップロードできます
 
-        .product__info__inner-content__table
-        %table
-          %tbody
-            %tr
-              %th 出品者
-              %td
-                %p#blue bomber
-                %i.fas.fa-grin
-                500
-                %i.fas.fa-meh
-                10
-                %i.fas.fa-frown
-                5
-            %tr
-              %th カテゴリー
-              %td#blue
-                おもちゃ・ホビー・グッズ
-                %p
-                = fa_icon 'chevron-right'
-                楽器/機材
-                %p
-                = fa_icon 'chevron-right'
-                DJ機器
-            %tr
-              %th ブランド
-              %td#blue テクニクス
-            %tr
-              %th 商品のサイズ
-              %td
-            %tr
-              %th 商品の状態
-              %td 新品、未使用
-            %tr
-              %th 配送料の負担
-              %td 送料込み(出品者負担)
-            %tr
-              %th 配送方法
-              %td 未定
-            %tr
-              %th 配送元地域
-              %td#blue 東京都
-            %tr
-              %th 発送の目安
-              %td 1~2日で発送
-        .product__info__inner-content__account
-          .product__info__inner-content__account__price-detail
-            .price ¥ 43,000
-            .tax (税込)
-            %sub 送料込み
-        .product__info__inner-content__purchase-btn#btn-detail
-          = link_to "購入画面に進む", "#", class:'btn-detail'
-        .product__info__inner-content__text
-          Technics SL-1200MK5ターンテーブル 新品！ 未使用！
-          生産終了品です！
-          %br
-          綺麗なもの探してた方におすすめです。
-          お早めにどうぞ！
-          %br
-          ご不明点があればコメントよろしくお願いいたします。
-  %br
-  .product
-    .product__edit-btn
-      %button
-        = link_to "商品の編集", "#", id:'btn-comment'
-    %sub#or or
-    .product__comment-btn
-      %button
-        = link_to "出品を一旦停止する", "#", id:'btn-stop'
-    .product__comment-btn
-      %button
-        = link_to "この商品を削除する", "#", id:'btn-stop'
-  %br
-  .product
-    .product__attention
-      %p 相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
-    .product__comment-form
-      %textarea
-    .product__comment-btn
-      %button
-        = link_to "コメントする", "#", id:'btn-comment'
-  %br
-= render partial:'shared/global-only-footer'
+          = f.fields_for :product_images, @product.product_images.first do |image|
+            .product__img__dropzone.clearfix
+              #preview
+              -# １〜５枚目プレビュー表示
+              .product__img__dropzone__input
+                = image.label :image, for: "upload-image" do
+                  .input-area
+                    = image.file_field :image_url, id: "upload-image", class: "upload-image", 'data-image': 0
+
+                  .product__img__dropzone__input__description
+                    .product__img__dropzone__input__description__text
+                      ドラッグアンドドロップ
+                      %br
+                      またはクリックしてファイルをアップロード
+
+            .product__img__dropzone2.clearfix
+              #preview2
+              -# ６〜１０枚目プレビュー表示
+              .product__img__dropzone2__input2
+                = image.label :image, for: "upload-image" do
+                  .input-area
+                    = image.file_field :image_url, id: "upload-image", class: "upload-image", 'data-image': 0
+                  .product__img__dropzone2__input2__description
+                    .product__img__dropzone2__input2__description__text
+                      ドラッグアンドドロップ
+                      %br
+                      またはクリックしてファイルをアップロード
+
+        .product__info
+          .product__info_name
+          %ul
+            %li
+              %h3 商品名
+            %li
+              .required__icon 必須
+            .clearfix
+            = f.text_field :name, class: 'text_field', placeholder: "商品名（必須 40文字まで）"
+
+          .product__info_text
+          %ul
+            %li
+              %h3 商品の説明
+            %li
+              .required__icon 必須
+            .clearfix
+            = f.text_area :text, placeholder: '商品の説明（必須1,000文字以内）（色、素材、重さ、定価、注意点など）例) 2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。', size:"71x6",class: 'text_area'
+
+        .product__detail
+          %h3.light_color 商品詳細
+
+          .clearfix
+          .product__detail__form_box
+            .product__detail__form_box__category
+              %ul
+                %li
+                  %h3 カテゴリー
+                %li
+                  .required__icon 必須
+              .clearfix
+              .select-wrap
+                = select_tag "category", options_for_select(get_category_name, selected: @product.category.parent.parent.id), class: "select_tag parent_id", id: "product_category_id"
+                = fa_icon 'chevron-down', class:'fa_icon'
+
+              .select-wrap
+                -# 中身はjsで表示
+                = select_tag "category" , options_for_select({}), class: "select_tag child_id", id: "product_category_id", 'data-product_catgory_child_id': @product.category.parent.id
+                = fa_icon 'chevron-down', class:'fa_icon'
+
+              .select-wrap
+                -# 中身はjsで表示
+                = f.select :category_id, options_for_select({}), {}, class: "select_tag grandchild_id", id: "product_category_id", 'data-product_catgory_grandchild_id': @product.category.id
+                = fa_icon 'chevron-down', class:'fa_icon'
+
+            .product__detail__form_box__size
+              %ul
+                %li
+                  %h3 サイズ
+                %li
+                  .required__icon 必須
+              .clearfix
+              .select-wrap
+                -# 中身はjsで表示
+                = f.select :size_id, options_for_select({}), {}, class: "select_tag size_id", id: "product_size_id", 'data-product_size_id': @product.size.id
+                = fa_icon 'chevron-down', class:'fa_icon'
+
+            .product__detail__form_box__brand
+              %ul
+                %li
+                  %h3 ブランド
+                %li
+                  .optional__icon 任意
+              .clearfix
+              .select-wrap
+                = f.text_field :brand_id, value: @product.brand.name, class: 'text_field', placeholder: "例） シャネル"
+
+            .product__detail__form_box__status
+              %ul
+                %li
+                  %h3 商品の状態
+                %li
+                  .required__icon 必須
+              .clearfix
+              .select-wrap
+                = f.select :status, options_for_select(get_status, selected: @product.status), class: "select_tag", id: "product_status"
+                = fa_icon 'chevron-down', class:'fa_icon'
+
+        .shipping-fee
+          %h3.light_color 配送について
+          %span.icon_question ?
+
+          .clearfix
+          .shipping-fee__form_box
+            .shipping-fee-payer
+              %ul
+                %li
+                  %h3 配送料の負担
+                %li
+                  .required__icon 必須
+              .clearfix
+              .select-wrap
+                = f.select :shipping_fee_payer, options_for_select(get_shipping_fee_payer,selected: @product.shipping_fee_payer), {},{class: "select_tag shipping_fee_payer", id: "product_shipping_fee_payer"}
+                = fa_icon 'chevron-down', class:'fa_icon'
+
+            .root-of-delivery_method-for-css#new-delivery-method
+              .delivery-method
+                %ul
+                  %li
+                    %h3 配送の方法
+                  %li
+                    .required__icon 必須
+                .clearfix
+                .select-wrap
+                  -# 中身はjsで表示
+                  = f.select :delivery_method, options_for_select({}), {}, id: "product_delivery_method"
+                  = fa_icon 'chevron-down', class:'fa_icon'
+
+            .delivery-from-area
+              %ul
+                %li
+                  %h3 発送元の地域
+                %li
+                  .required__icon 必須
+              .clearfix
+              .select-wrap
+                = f.collection_select :prefecture_id, Prefecture.all, :id, :name,{prompt: "---"}, selected: @product.prefecture.name, class:"select_pref"
+                = fa_icon 'chevron-down', class:'fa_icon'
+
+            .delivery-time
+              %ul
+                %li
+                  %h3 発送までの日数
+                %li
+                  .required__icon 必須
+              .clearfix
+              .select-wrap
+                = f.select :delivery_time, options_for_select(get_delivery_time, selected: @product.delivery_time),class: 'select_tag', id: "product_category_id"
+                = fa_icon 'chevron-down', class:'fa_icon'
+
+        .sell-price
+          %h3.light_color 販売価格(300〜9,999,999)
+          %span.icon_question ?
+          .clearfix
+          .sell-price__form_box
+            .sell__fee
+              %ul
+                %li
+                  %h3 価格
+                %li
+                  .required__icon 必須
+                %li.yen ¥
+                %li.price_tag
+                  = f.text_field :price, placeholder: '例) 300',class: 'sell-price__text_area_2'
+                  .clearfix
+                %br
+                %br
+                %br
+            .line
+              %p.fee
+                販売手数料 (10%)
+              = text_field_tag :content, "¥ #{(@product.price/10).to_s(:delimited)}", class: 'sell-price__text_area_3 mercari-share'
+            .sell-price__profit
+              %h3.profit
+                販売利益
+              = text_field_tag :content, "¥ #{(@product.price*0.9).round.to_s(:delimited)}", class: 'sell-price__text_area_3 seller-share'
+
+        .sell-btn
+          .dscription
+            %span 禁止されている出品
+            %p、
+            %span 行為
+            %p を必ずご確認ください。
+            %p またブランド品でシリアルナンバー等がある場合はご記載ください。
+            %span 偽ブランドの販売
+            %p は犯罪であり処罰される可能性があります。
+            %p また、出品をもちまして
+            %span 加盟店規約
+            %p に同意したことになります。
+          = f.submit "変更する", class: "redbtn"
+          .clearfix
+          .sell-btn__return
+            = link_to "キャンセル", :back
+
+  = render 'product_footer'

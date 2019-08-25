@@ -29,7 +29,7 @@
                       ドラッグアンドドロップ
                       %br
                       またはクリックしてファイルをアップロード
-
+                  
             .product__img__dropzone2.clearfix
               #preview2
               -# ６〜１０枚目プレビュー表示
@@ -76,15 +76,13 @@
               .clearfix
               .select-wrap
                 = select_tag "category", options_for_select(get_category_name), class: "select_tag parent_id", id: "product_category_id"
-                = fa_icon 'chevron-down', class:'fa_icon'
-
+                = fa_icon 'chevron-down', class:'fa_icon' 
+              
               .select-wrap
-                -# 中身はjsで表示
                 = select_tag "category" , options_for_select({}), class: "select_tag child_id", id: "product_category_id"
                 = fa_icon 'chevron-down', class:'fa_icon'
-
+              
               .select-wrap
-                -# 中身はjsで表示
                 = f.select :category_id, options_for_select({}), {}, class: "select_tag grandchild_id", id: "product_category_id"
                 = fa_icon 'chevron-down', class:'fa_icon'
 
@@ -96,10 +94,9 @@
                   .required__icon 必須
               .clearfix
               .select-wrap
-                -# 中身はjsで表示
                 = f.select :size_id, options_for_select({}), {}, class: "select_tag size_id", id: "product_size_id"
                 = fa_icon 'chevron-down', class:'fa_icon'
-
+            
             .product__detail__form_box__brand
               %ul
                 %li
@@ -109,7 +106,7 @@
               .clearfix
               .select-wrap
                 = f.text_field :brand_id, class: 'text_field', placeholder: "例） シャネル"
-
+            
             .product__detail__form_box__status
               %ul
                 %li
@@ -147,7 +144,6 @@
                     .required__icon 必須
                 .clearfix
                 .select-wrap
-                  -# 中身はjsで表示
                   = f.select :delivery_method, options_for_select({}), {}, id: "product_delivery_method"
                   = fa_icon 'chevron-down', class:'fa_icon'
 
@@ -159,7 +155,7 @@
                   .required__icon 必須
               .clearfix
               .select-wrap
-                = f.select :delivery_from_area, options_for_select(get_delivery_from_area),class: 'select-tag', id: "product_delivery_from_area"
+                = f.collection_select :prefecture_id, Prefecture.all, :id, :name,{prompt: "---"}, class:"select_pref"
                 = fa_icon 'chevron-down', class:'fa_icon'
 
             .delivery-time
@@ -170,7 +166,7 @@
                   .required__icon 必須
               .clearfix
               .select-wrap
-                = f.select :delivery_time, options_for_select(get_delivery_time),class: 'select_tag', id: "product_category_id"
+                = f.select :delivery_time, options_for_select(get_delivery_time), class: 'select_tag', id: "product_delivery_time"
                 = fa_icon 'chevron-down', class:'fa_icon'
 
         .sell-price
@@ -194,12 +190,12 @@
             .line
               %p.fee
                 販売手数料 (10%)
-              = text_field_tag :content, "-", class: 'sell-price__text_area_3 mercari-share'
+              = text_field_tag :content, '-', class: 'sell-price__text_area_3 mercari-share'
+
             .sell-price__profit
               %h3.profit
                 販売利益
               = text_field_tag :content, '-',class: 'sell-price__text_area_3 seller-share'
-
         .sell-btn
           .dscription
             %span 禁止されている出品
@@ -218,24 +214,3 @@
             = link_to "もどる", :back
 
     = render 'product_footer'
-
-:css
-  <!--
-  .ui-autocomplete {
-    width:100px;
-      max-height: 300px;
-      overflow-y: auto;
-      box-shadow: 0px 0px 3px rgba(0, 0, 1, 1);
-      overflow-x: hidden;
-      padding-right: 20px;
-            background:white;
-            opacity:1;
-            z-index:10;}
-  #jquery-ui-autocomplete label {
-      float: left;
-      margin-right: 0.5em;
-      color: black;
-      font-size: 15px;
-      background:white;
-  }
-  -->

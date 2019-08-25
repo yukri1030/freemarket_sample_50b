@@ -2121,7 +2121,7 @@
          *     .slick("setOption", { 'option': value, ... }, refresh )
          */
 
-        var _ = this, l, item, option, value, refresh = false, type;
+        var _ = this, l, product, option, value, refresh = false, type;
 
         if( $.type( arguments[0] ) === 'object' ) {
 
@@ -2163,11 +2163,11 @@
 
         } else if ( type === 'responsive' ) {
 
-            for ( item in value ) {
+            for ( product in value ) {
 
                 if( $.type( _.options.responsive ) !== 'array' ) {
 
-                    _.options.responsive = [ value[item] ];
+                    _.options.responsive = [ value[product] ];
 
                 } else {
 
@@ -2176,7 +2176,7 @@
                     // loop through the responsive object and splice out duplicates.
                     while( l >= 0 ) {
 
-                        if( _.options.responsive[l].breakpoint === value[item].breakpoint ) {
+                        if( _.options.responsive[l].breakpoint === value[product].breakpoint ) {
 
                             _.options.responsive.splice(l,1);
 
@@ -2186,7 +2186,7 @@
 
                     }
 
-                    _.options.responsive.push( value[item] );
+                    _.options.responsive.push( value[product] );
 
                 }
 

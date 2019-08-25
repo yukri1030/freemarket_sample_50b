@@ -1,5 +1,5 @@
 // サムネイルスライダー
-$(function () {
+document.addEventListener("turbolinks:load", function () {
   var slider = "#slider";
   var thumbnailProduct = "#thumb .product_s-img";
 
@@ -44,4 +44,23 @@ $(function () {
       $(this).stop().fadeTo("4000", 0.5); // マウスアウトで透明度を30%に戻す
     }
   );
+});
+
+//product_show 削除btnのモーダル
+$(document).on("turbolinks:load", function() {
+  var modalOpen = $("#btn-delete");
+  var modalMask = $("#product__mask");
+  var modalWindow = $("#modal");
+  var modalClose = $("#btn-delete-modal");
+
+  modalOpen.click(function() {
+    modalMask.fadeIn();
+    modalWindow.fadeIn();
+    "body".css("overflow", "hidden");
+  });
+  modalClose.click(function() {
+    modalMask.fadeOut();
+    modalWindow.fadeOut();
+    $("body").css("overflow", "auto");
+  });
 });

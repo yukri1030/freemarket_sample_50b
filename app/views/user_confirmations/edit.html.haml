@@ -4,55 +4,63 @@
     .user_mypage__container__edit
       .user_mypage__container__edit__title
         %h2 本人情報の登録
+
       .user_mypage__container__edit__form
         .user_mypage__container__edit__form__description
           %p
-            お客様の本人情報を登録してください
+            お客さまの本人情報をご登録ください。
             %br
             登録されたお名前・生年月日を変更する場合、本人確認書類の提出が必要になります。
           %p.user_mypage__container__edit__form__description__text-right
             =link_to "#", class: "user_mypage__container__edit__form__description__text-right__link"do
               本人確認書類のアップロードについて
               %i.fas.fa-chevron-right
+
         .user_mypage__container__edit__form__list
           %label お名前
           %p
-            = "阿部 "+ " " + "優香里"
+            = @user.family_name + " " + @user.last_name
         .user_mypage__container__edit__form__list
           %label お名前カナ
           %p
-            = "アベ" + " " + "ユカリ"
+            = @user.family_name_kana + " " + @user.last_name_kana
         .user_mypage__container__edit__form__list
           %label 生年月日
           %p
-            = "1994/ 1/26"
+            = @user.birth_ymd.to_s.gsub(/-/, '/')
+
+        = form_for(@user, url: user_user_confirmation_path) do |f|
           .user_mypage__container__edit__form__list
             %label 郵便番号
             %span 任意
-            = text_field_tag :content, '',{ placeholder: "例） 1234567"}
+            = f.text_field :zipcode, value: "#{@user.zipcode}", placeholder: "例） 1234567"
           .user_mypage__container__edit__form__list
             %label 都道府県
             %span 任意
             .user_mypage__container__edit__form__list__selectwrap
-              = collection_select :id, :prefecture_id, Prefecture.all, :id, :name,{},class: "select-tag"
+              = f.collection_select(:address_prefecture, Prefecture.all, :id, :name, {prompt: ""}, {class: "select-tag"})
               = fa_icon 'chevron-down', class: 'fa-icon'
-            .user_mypage__container__edit__form__list
+          .user_mypage__container__edit__form__list
+            %label 市区町村
+            %span 任意
+            = f.text_field :address_city, value: "#{@user.address_city}", placeholder: "例） 横浜市緑区"
+          .user_mypage__container__edit__form__list
             %label 番地
             %span 任意
-            = text_field_tag :content, '',{ placeholder: "例） 青山1-1-1"}
+            = f.text_field :address_street_number, value: "#{@user.address_street_number}", placeholder: "例） 青山1-1-1"
           .user_mypage__container__edit__form__list
             %label 建物名
             %span 任意
 
-            = text_field_tag :content, '',{ placeholder: "例） 柳ビル103"}
+            = f.text_field :address_building_name, value: "#{@user.address_building_name}", placeholder: "例） 柳ビル103"
 
-          %button{type: "submit", class: "user_mypage__container__edit__form__button redbtn"} 登録する
+          %button{type: "submit", class: "user_mypage__container__edit__form__button redbtn", method: :patch} 登録する
 
           .user_mypage__container__edit__form__about-registration
             %p
               =link_to "#", class: "user_mypage__container__edit__form__about-registration__link" do
                 本人情報の登録について
                 %i.fas.fa-chevron-right
-      
 
+    -# サイドメニュー部分テンプレート
     =render partial: "users/user_side_menu"
