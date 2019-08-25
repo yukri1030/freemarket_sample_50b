@@ -1,5 +1,10 @@
 class UserConfirmationsController < ApplicationController
   before_action :set_user, only: [:edit, :update]
+
+  def create
+    
+  end
+  
   def edit
   end
 
