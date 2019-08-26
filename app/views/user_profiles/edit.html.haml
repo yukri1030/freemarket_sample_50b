@@ -5,13 +5,14 @@
       .user_mypage__container__edit__title
         %h2 プロフィール
       .user_mypage__container__edit__editform
-      = form_for(@user, url: user_user_profiles_path) do |f|
+      = form_for(@user, url: user_user_profile_path) do |f|
         .user_mypage__container__edit__editform__name
           %figure
-            = image_tag "ねこ2.jpeg", width: "60", height: "60"
+            = image_tag "ねこ２.jpeg", width: "60", height: "60"
           %input{type: "text", name: "nickname",value: "#{@user.nickname}",class: "user_mypage__container__edit__editform__name__inputbox"}
         .user_mypage__container__edit__editform__content
           %textarea{name: "profile_comment"}
-          %button{type: "submit", class: "user_mypage__container__edit__editform__content__submit redbtn"} 変更する
-          -# = link_to user_user_profiles_paths(@user.nickname)
+          %button{type: "submit", class: "user_mypage__container__edit__editform__content__submit redbtn", method: :patch} 変更する
+
+    -# サイドメニュー部分テンプレート
     =render partial: "users/user_side_menu"
