@@ -1,0 +1,8 @@
+- breadcrumb :cards_add
+.user_mypage
+  .user_mypage__container
+    = render partial:'users/user_side_menu'
+    .credit_2
+      .credit__title
+        %h2 クレジットカード情報入力
+      = render partial:'cards/cards_detail', locals: { move_from_action: "add" }
