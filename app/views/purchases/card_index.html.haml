@@ -4,5 +4,6 @@
 .reposition-wrapper
 .user_mypage
   .user_mypage__container
+    = render partial: 'users/user_side_menu'
     = render partial: 'cards/cards_main_menu', locals: { move_from: 'purchase', product_id: @product.id }
     = render partial: 'products/product_footer'
