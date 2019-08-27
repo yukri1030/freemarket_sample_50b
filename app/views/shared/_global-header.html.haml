@@ -91,6 +91,9 @@
                     = link_to '透明Aタグ','#', class: class_name
                     %ul.menu__small-level
                       / 第三階層
+              / 第一階層
+              %li
+                = link_to 'カテゴリー一覧', categories_path, class: 'main-level'
           %li.menu__brand-menu
             = link_to '#', class: 'menu__brand-menu__button' do
               %i.fas.fa-tag
