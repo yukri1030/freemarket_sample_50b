@@ -1,6 +1,5 @@
 class UserProfilesController < ApplicationController
   before_action :authenticate_user!
-  # before_action :user_params
 
   def new
     render layout: 'application-off-header-footer.html.haml'
