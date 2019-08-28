@@ -14,7 +14,11 @@ class UserProfilesController < ApplicationController
 
   def update
     @profile = Profile.find(params[:id])
-    @profile.update(profile_param)
+    if @profile.update(profile_param)
+      redirect_to mypage_path
+    else
+      render :edit
+    end
   end
 
   private
