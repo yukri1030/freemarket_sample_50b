@@ -5,11 +5,14 @@
       .user_mypage__container__edit__title
         %h2 プロフィール
       .user_mypage__container__edit__editform
-      = form_for(@profile, url: user_user_profile_path(@profile.id), method: :patch) do |f|
+      = form_for(@profile, url: user_user_profile_path, method: :patch) do |f|
         .user_mypage__container__edit__editform__name
           %figure
-            = image_tag "ねこ２.jpg", width: "60", height: "60"
-          = f.text_field :nickname,  autofocus: true, value: "#{@profile.user.nickname}", class: "user_mypage__container__edit__editform__name__inputbox"
+            - if @profile.avatar.blank?
+              = image_tag "ねこ２.jpg", width: "60", height: "60"
+            - else
+              = image_tag @profile.avatar.url, alt: 'user-icon'
+          = f.text_field :nickname,  autofocus: true, value: "#{@profile.nickname}", class: "user_mypage__container__edit__editform__name__inputbox"
         .user_mypage__container__edit__editform__content
           = f.text_area :profile_comment, placeholder: "例）こんにちは☆ ご覧いただきありがとうございます！かわいいものやきれいめオフィスカジュアル中心に出品しています。服のサイズは主に9号です。気持ちよくお取引できるよう心がけていますので、商品や発送方法などご質問がありましたらお気軽にどうぞ♪"
           %button{type: "submit", class: "user_mypage__container__edit__editform__content__submit redbtn"} 変更する

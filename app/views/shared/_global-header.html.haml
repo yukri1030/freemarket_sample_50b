@@ -161,20 +161,20 @@
                         現在、やる事リストはありません
             %li.menu__user-menu.user-list
               = link_to mypage_path, class: "menu__user-menu__button" do
-                -if current_user.profile.avatar
-                  = image_tag current_user.profile.avatar, width: "30", height: "30", class:"nav-user-profile-img"
+                -if current_user.profile.avatar.blank?
+                  = image_tag "ねこ２.jpg", width: "30", height: "30", class:"nav-user-profile-img"
                 -else
-                  = image_tag "memberphotonoimage.png", width: "30", height: "30", class:"nav-user-profile-img"
+                  = image_tag current_user.profile.avatar.url, width: "30", height: "30", class:"nav-user-profile-img"
                 .title-mypage マイページ
               %ul.menu__main-level.user
                 / 第一階層
                 %li
                   .user-box
                     = image_tag "user_top_background_image.jpg", width: "320", height: "80", class:"user-img"
-                    -if current_user.profile.avatar
-                      = image_tag current_user.profile.avatar, width: "60", height: "60", class:"user-profile-img"
+                    -if current_user.profile.avatar.blank?
+                      = image_tag "ねこ２.jpg", width: "60", height: "60", class:"user-profile-img"
                     -else
-                      = image_tag "memberphotonoimage.png", width: "60", height: "60", class:"user-profile-img"
+                      = image_tag current_user.profile.avatar.url, width: "60", height: "60", class:"user-profile-img"
                   = link_to '#', class: 'main-level' do
                     .text-box
                       .user-name
