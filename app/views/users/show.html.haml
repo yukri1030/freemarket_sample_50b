@@ -11,7 +11,10 @@
             -else
               = image_tag current_user.profile.avatar.url, width: "60", height: "60"
           %h2.user_mypage__container__main__user_info__link__user-name
-            = @user.profile.nickname
+            - if @current_user.profile.nickname.blank?
+              = @current_user.nickname
+            - else
+              = @current_user.profile.nickname
           .user_mypage__container__main__user_info__link__count
             .user_mypage__container__main__user_info__link__count__rating
               評価

@@ -178,6 +178,9 @@
                   = link_to '#', class: 'main-level' do
                     .text-box
                       .user-name
+                      - if @current_user.profile.nickname.blank?
+                        = @current_user.nickname
+                      - else
                         = @current_user.profile.nickname
                       %br/
                       評価: 8 出品数: 0
