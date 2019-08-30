@@ -1,13 +1,6 @@
 class UserProfilesController < ApplicationController
   before_action :authenticate_user!
 
-  def new
-    render layout: 'application-off-header-footer.html.haml'
-  end
-
-  def create
-  end
-
   def edit
     @profile =  current_user.profile
   end

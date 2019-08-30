@@ -15,7 +15,10 @@
             - else
               = image_tag @profile.avatar.url, onClick:"$('#upfile').click()", width: "60", height: "60"
           = f.file_field :avatar, style: "display: none;", id: "upfile"
-          = f.text_field :nickname,  autofocus: true, value: "#{@profile.nickname}", class: "user_mypage__container__edit__editform__name__inputbox"
+          - if @profile.nickname.blank?
+            = f.text_field :nickname,  autofocus: true, value: "#{@current_user.nickname}", class: "user_mypage__container__edit__editform__name__inputbox"
+          - else
+            = f.text_field :nickname,  autofocus: true, value: "#{@profile.nickname}", class: "user_mypage__container__edit__editform__name__inputbox"
         .user_mypage__container__edit__editform__content
           = f.text_area :profile_comment, placeholder: "例）こんにちは☆ ご覧いただきありがとうございます！かわいいものやきれいめオフィスカジュアル中心に出品しています。服のサイズは主に9号です。気持ちよくお取引できるよう心がけていますので、商品や発送方法などご質問がありましたらお気軽にどうぞ♪"
           %button{type: "submit", class: "user_mypage__container__edit__editform__content__submit redbtn"} 変更する
