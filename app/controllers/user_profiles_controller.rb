@@ -6,7 +6,7 @@ class UserProfilesController < ApplicationController
   end
 
   def update
-    @profile = Profile.find(params[:id])
+    @profile = Profile.find(params[:user_id])
     if @profile.update(profile_param)
       flash[:notice] = '変更しました'
       redirect_to mypage_path
