@@ -1,5 +1,6 @@
 
 class Profile < ApplicationRecord
+  mount_uploader :avatar, ImagesUploader
   belongs_to :user
 
   validates :phone_number, presence: true, on: :sms_confirmation_send

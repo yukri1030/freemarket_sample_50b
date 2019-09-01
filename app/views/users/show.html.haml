@@ -6,12 +6,15 @@
       .user_mypage__container__main__user_info
         = link_to "#", class: 'user_mypage__container__main__user_info__link' do
           %figure
-            -if @user.profile.avatar
-              = image_tag @user.profile.avatar, width: "60", height: "60"
+            -if current_user.profile.avatar.blank?
+              = image_tag 'ねこ２.jpg', width: "60", height: "60"
             -else
-              = image_tag "memberphotonoimage.png", width: "60", height: "60"
+              = image_tag current_user.profile.avatar.url, width: "60", height: "60"
           %h2.user_mypage__container__main__user_info__link__user-name
-            = @user.nickname
+            - if @current_user.profile.nickname.blank?
+              = @current_user.nickname
+            - else
+              = @current_user.profile.nickname
           .user_mypage__container__main__user_info__link__count
             .user_mypage__container__main__user_info__link__count__rating
               評価

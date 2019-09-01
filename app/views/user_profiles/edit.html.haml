@@ -5,13 +5,23 @@
       .user_mypage__container__edit__title
         %h2 プロフィール
       .user_mypage__container__edit__editform
-        -# = form_for(@user) do |f|
+      = form_for(@profile, url: user_user_profile_path(@profile.id), method: :patch) do |f|
         .user_mypage__container__edit__editform__name
+
           %figure
-            = image_tag "ねこ2.jpeg", width: "60", height: "60"
-          %input{type: "text", name: "nickname", class: "user_mypage__container__edit__editform__name__inputbox"}
+            - if @profile.avatar.blank?
+              = image_tag "ねこ２.jpg", width: "60", height: "60", onClick:"$('#upfile').click()"
+              = f.file_field :avatar, style: "display: none;", id: "upfile"
+            - else
+              = image_tag @profile.avatar.url, onClick:"$('#upfile').click()", width: "60", height: "60"
+          = f.file_field :avatar, style: "display: none;", id: "upfile"
+          - if @profile.nickname.blank?
+            = f.text_field :nickname,  autofocus: true, value: "#{@current_user.nickname}", class: "user_mypage__container__edit__editform__name__inputbox"
+          - else
+            = f.text_field :nickname,  autofocus: true, value: "#{@profile.nickname}", class: "user_mypage__container__edit__editform__name__inputbox"
         .user_mypage__container__edit__editform__content
-          %textarea{name: "profile_comment"}
+          = f.text_area :profile_comment, placeholder: "例）こんにちは☆ ご覧いただきありがとうございます！かわいいものやきれいめオフィスカジュアル中心に出品しています。服のサイズは主に9号です。気持ちよくお取引できるよう心がけていますので、商品や発送方法などご質問がありましたらお気軽にどうぞ♪"
           %button{type: "submit", class: "user_mypage__container__edit__editform__content__submit redbtn"} 変更する
 
+    -# サイドメニュー部分テンプレート
     =render partial: "users/user_side_menu"

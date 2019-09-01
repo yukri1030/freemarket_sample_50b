@@ -64,15 +64,15 @@ class CardsController < ApplicationController
     end
   end
 
-  def destroy
+  def destroy #PayjpとCardデータベースを削除
     card = Card.find_by(user_id: current_user.id)
     if card.present?
-      .api_key = Rails.application.credentials.payjp[:test_secret_key]
+      Payjp.api_key = Rails.application.credentials.payjp[:test_secret_key]
       customer = Payjp::Customer.retrieve(card.customer_id)
       customer.delete
       card.destroy
       flash[:notice] = 'クレジットカードを削除しました'
-      case
+      case params[:move_from]
       when 'purchase'
         redirect_to new_product_purchase_path(params[:product_id]), notice: 'クレジットカードを削除しました'
         return

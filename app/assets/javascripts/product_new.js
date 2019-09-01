@@ -153,14 +153,14 @@ document.addEventListener("turbolinks:load", function() {
     var input = $(".sell-price__text_area_2").val();
     var fee = parseInt(input / 10);
     if (isNaN(fee) == false && input >= 300 && input <= 9999999) {
-      $(".mercari-share").val(fee);
-      $(".seller-share").val(input - fee);
+      $(".mercari-share").val("¥" + fee);
+      $(".seller-share").val("¥" + (input - fee));
     } else {
       $(".mercari-share").val("-");
       $(".seller-share").val("-");
     }
   });
-});
+}); 
 
 $(function() {
   $("#product_brand_id").autocomplete({
