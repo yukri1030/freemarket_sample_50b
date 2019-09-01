@@ -126,7 +126,7 @@ class ProductsController < ApplicationController
     end
     respond_to do |format|
       format.json
-      format.json
+      format.html
     end
   end
 
