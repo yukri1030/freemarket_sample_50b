@@ -357,7 +357,7 @@ document.addEventListener("turbolinks:load", function() {
       var separate_profit = separate(input - fee);
       if (isNaN(fee) == false && input >= 300 && input <= 9999999) {
         $(".mercari-share").val("¥" + separate_fee);
-        $(".seller-share").val(separate_profit);
+        $(".seller-share").val("¥" + separate_profit);
       } else {
         $(".mercari-share").val("-");
         $(".seller-share").val("-");
