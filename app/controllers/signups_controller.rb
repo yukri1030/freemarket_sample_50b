@@ -39,7 +39,7 @@ class SignupsController < ApplicationController
     else
       @profile = current_user.profile
       @errors = '未記入箇所があります'
-      render 'address'
+      render 'address' and return
     end
     case params[:move_from]
       when 'signup'
