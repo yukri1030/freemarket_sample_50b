@@ -2,7 +2,6 @@ require 'carrierwave/storage/abstract'
 require 'carrierwave/storage/file'
 require 'carrierwave/storage/fog'
 
-
 if Rails.env.production?
   CarrierWave.configure do |config|
     config.storage = :fog
@@ -14,7 +13,7 @@ if Rails.env.production?
       region: 'ap-northeast-1'
     }
 
-    config.fog_directory  = 'freemarket-sample-50b'
-    config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/freemarket-sample-50b'
+    config.fog_directory  = 'pepe-takafree'
+    config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/pepe-takafree'
   end
 end
