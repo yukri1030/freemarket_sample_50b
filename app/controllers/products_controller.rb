@@ -43,7 +43,7 @@ class ProductsController < ApplicationController
 
     # @product.product_images.image_urlをバイナリーデータにしてビューで表示できるようにする
     require 'base64'
-    # require 'aws-sdk'
+    require 'aws-sdk'
 
     gon.product_images_binary_datas = []
     if Rails.env.production?

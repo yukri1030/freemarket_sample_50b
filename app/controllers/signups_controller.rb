@@ -20,6 +20,7 @@ class SignupsController < ApplicationController
   def address
     
   end
+  
   def oauth_google
     @user = User.new
     @user.email = session["devise.google_data"]["info"]["unverified_email"]
