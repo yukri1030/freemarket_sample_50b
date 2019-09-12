@@ -77,7 +77,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 group :production do
   gem 'unicorn', '5.4.1'
 end
-# haml
+
 gem 'haml-rails'
 gem 'erb2haml'
 gem 'font-awesome-rails'
@@ -103,6 +103,6 @@ gem 'dotenv-rails'
 gem 'unf_ext'
 gem 'carrierwave'
 gem 'mini_magick'
+gem 'aws-sdk'
 gem 'fog-aws'
 gem 'kaminari'
-gem 'aws-sdk'

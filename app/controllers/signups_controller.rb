@@ -20,6 +20,7 @@ class SignupsController < ApplicationController
   def address
     
   end
+  
   def oauth_google
     @user = User.new
     @user.email = session["devise.google_data"]["info"]["unverified_email"]
@@ -39,7 +40,7 @@ class SignupsController < ApplicationController
     else
       @profile = current_user.profile
       @errors = '未記入箇所があります'
-      render 'address'
+      render 'address' and return
     end
     case params[:move_from]
       when 'signup'
